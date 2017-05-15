@@ -1954,7 +1954,7 @@ var ApiService = (function () {
         }
     };
     ApiService.prototype.login = function () {
-        return this.http.get('login');
+        return this.http.get('getLoginUrl');
     };
     ApiService.prototype.postCode = function (code) {
         var encoded_data = JSON.stringify({ code: code });

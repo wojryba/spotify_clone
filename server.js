@@ -21,7 +21,7 @@ app.use(cors());
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(bodyParser.json());
 
-app.get('/login', (req, res) => {
+app.get('/getLoginUrl', (req, res) => {
   res.send(authorizeURL);
 })
 
@@ -56,6 +56,10 @@ app.post('/callback', (req, res) => {
   });
 })
 
+// All remaining requests redirect to angular.
+app.get('*', function(request, response) {
+  response.sendFile(path.resolve(__dirname, './dist/', 'index.html'));
+});
 
 app.listen(port, function(){
   console.log("connected to server on port " + port);

@@ -23,7 +23,7 @@ export class ApiService {
   }
 
   login() {
-    return this.http.get('login');
+    return this.http.get('getLoginUrl');
   }
 
   postCode(code){

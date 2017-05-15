@@ -31,8 +31,10 @@ export class LoginComponent implements OnInit {
 
   getCode() {
     if (this.route.snapshot.queryParams.code) {
+      console.log('i have the params')
       this.api.postCode(this.route.snapshot.queryParams.code).subscribe(
         response => {
+          console.log('res');
           localStorage.setItem('code', response['_body']);
           setTimeout(() => {
             this.router.navigate([''])
@@ -41,6 +43,7 @@ export class LoginComponent implements OnInit {
         error => console.log(error)
       );
     } else {
+      console.log('i dont')
       if (this.api.auth()) {
         this.router.navigate['/login']
       }
