@@ -326,7 +326,7 @@ var ArtistComponent = (function () {
             _this.followed = false;
         }, function (error) { return console.log(error); });
     };
-    //TOP TRACKS
+    // TOP TRACKS
     // play chosen song from top tracks
     ArtistComponent.prototype.playSong = function (i) {
         this.music.playlist = this.topTracks;
@@ -532,7 +532,6 @@ var LoginComponent = (function () {
     LoginComponent.prototype.getCode = function () {
         var _this = this;
         if (this.route.snapshot.queryParams.code) {
-            console.log('i have the params');
             this.api.postCode(this.route.snapshot.queryParams.code).subscribe(function (response) {
                 console.log('res');
                 localStorage.setItem('code', response['_body']);
@@ -542,9 +541,8 @@ var LoginComponent = (function () {
             }, function (error) { return console.log(error); });
         }
         else {
-            console.log('i dont');
             if (this.api.auth()) {
-                this.router.navigate['/login'];
+                this.router.navigate(['']);
             }
         }
     };
@@ -653,7 +651,7 @@ var MainComponent = (function () {
         var _this = this;
         this.api.useLink(this.playlists['next']).subscribe(function (response) {
             var res = JSON.parse(response['_body']);
-            if (res.playlists.next == _this.playlists['next']) {
+            if (res.playlists.next === _this.playlists['next']) {
                 _this.show = true;
                 setTimeout(function () { return _this.show = false; }, 1000);
             }
@@ -1017,7 +1015,7 @@ var PlaylistComponent = (function () {
         this.api = api;
         this.music = music;
         this.router = router;
-        this.whitespace = "&nbsp;";
+        this.whitespace = '&nbsp;';
         this.show = false;
     }
     PlaylistComponent.prototype.showPlay = function (i) {
@@ -1178,7 +1176,7 @@ var SearchComponent = (function () {
         this.api.useLink(this.tracks['next']).subscribe(function (response) {
             var res = JSON.parse(response['_body']);
             console.log(res);
-            if (res.tracks.next == _this.tracks['next']) {
+            if (res.tracks.next === _this.tracks['next']) {
                 console.log('no more');
             }
             else {
@@ -1217,7 +1215,7 @@ var SearchComponent = (function () {
         this.api.useLink(this.artists['next']).subscribe(function (response) {
             var res = JSON.parse(response['_body']);
             console.log(res);
-            if (res.artists.next == _this.artists['next']) {
+            if (res.artists.next === _this.artists['next']) {
                 console.log('no more');
             }
             else {
@@ -1251,7 +1249,7 @@ var SearchComponent = (function () {
         this.api.useLink(this.albums['next']).subscribe(function (response) {
             var res = JSON.parse(response['_body']);
             console.log(res);
-            if (res.albums.next == _this.albums['next']) {
+            if (res.albums.next === _this.albums['next']) {
                 console.log('no more');
             }
             else {
@@ -1287,7 +1285,7 @@ var SearchComponent = (function () {
         var _this = this;
         this.api.useLink(this.playlists['next']).subscribe(function (response) {
             var res = JSON.parse(response['_body']);
-            if (res.playlists.next == _this.playlists['next']) {
+            if (res.playlists.next === _this.playlists['next']) {
                 console.log('no more');
             }
             else {
@@ -2217,7 +2215,7 @@ var MusicService = (function () {
             this.shuffle();
         }
         else {
-            if (i == 0) {
+            if (i === 0) {
                 i = this.playlist.length - 1;
                 console.log(this.playlist[i]);
             }

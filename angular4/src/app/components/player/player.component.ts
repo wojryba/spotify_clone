@@ -22,7 +22,7 @@ export class PlayerComponent implements OnInit {
       this.music.i = JSON.parse(localStorage.getItem('i'));
       this.music.track = JSON.parse(localStorage.getItem('track'));
       this.music.audio.src = this.music.track.preview_url;
-      this.music.checkIfTrackSaved()
+      this.music.checkIfTrackSaved();
     }
   }
 
@@ -32,7 +32,7 @@ export class PlayerComponent implements OnInit {
 
   progressBar(event: any) {
     if (this.music.audio.duration) {
-      let t = (this.music.value * this.music.audio.duration) / 100;
+      const t = (this.music.value * this.music.audio.duration) / 100;
       this.music.changeTime(t);
     }
   }
@@ -52,7 +52,7 @@ export class PlayerComponent implements OnInit {
         this.router.navigate(['/album']);
       },
       error => console.log(error)
-    )
+    );
   }
 
   artist() {
@@ -63,7 +63,7 @@ export class PlayerComponent implements OnInit {
         this.router.navigate(['/artist']);
       },
       error => console.log(error)
-    )
+    );
   }
 
   // saving tracks

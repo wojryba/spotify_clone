@@ -20,7 +20,7 @@ import { trigger, state, style, animate, transition } from '@angular/animations'
 export class PlaylistComponent implements OnInit {
   private playlist: any;
   private selected: any;
-  private whitespace = "&nbsp;"
+  private whitespace = '&nbsp;';
   private show = false;
   private followed;
 
@@ -35,7 +35,7 @@ export class PlaylistComponent implements OnInit {
   }
 
   ngOnInit() {
-    if(this.api.playlist){
+    if (this.api.playlist) {
       this.playlist = this.api.playlist;
       this.checkIfPlaylistFollowed();
     }

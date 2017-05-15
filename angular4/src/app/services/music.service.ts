@@ -24,14 +24,13 @@ export class MusicService {
      this.value = (this.audio.currentTime / this.audio.duration) * 100;
      this.duration = Math.round(this.audio.duration * 100) / 100;
      this.currentTime = Math.round(this.audio.currentTime * 100) / 100;
-
-    }
+   };
 
     // handle ended song
     this.audio.onended = () => {
       this.audio = new Audio();
       if (this.random) {
-        this.shuffle()
+        this.shuffle();
       } else {
         this.next(this.i);
       }
@@ -63,14 +62,13 @@ export class MusicService {
     this.value = (this.audio.currentTime / this.audio.duration) * 100;
     this.duration = Math.round(this.audio.duration * 100) / 100;
     this.currentTime = Math.round(this.audio.currentTime * 100) / 100;
-
-   }
+  };
 
    // handle ended song
    this.audio.onended = () => {
      this.audio = new Audio();
      if (this.random) {
-       this.shuffle()
+       this.shuffle();
      } else {
        this.next(this.i);
      }
@@ -88,7 +86,7 @@ export class MusicService {
          this.checkIfTrackSaved();
 
          // load the music to audio
-         this.audio.src = res.preview_url
+         this.audio.src = res.preview_url;
        } else {
          this.next(this.i);
        }
@@ -97,7 +95,7 @@ export class MusicService {
        console.log(error);
        this.next(this.i);
      }
-   )
+   );
  }
 
  next(i) {
@@ -117,7 +115,7 @@ export class MusicService {
    if (this.random) {
      this.shuffle();
    } else {
-     if (i == 0) {
+     if (i === 0) {
        i = this.playlist.length - 1;
        console.log(this.playlist[i]);
      } else {
@@ -128,13 +126,13 @@ export class MusicService {
  }
 
  shuffle() {
-   const i = Math.floor(Math.random() * this.playlist.length) + 1
+   const i = Math.floor(Math.random() * this.playlist.length) + 1;
    this.play(i);
  }
 
  pause() {
    if (this.p) {
-     this.audio.play()
+     this.audio.play();
    } else {
      this.audio.pause();
    }

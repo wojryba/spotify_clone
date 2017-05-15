@@ -9,9 +9,9 @@ import { AuthGuardService } from '../../services/auth-guard.service';
   styleUrls: ['./webplayer.component.css']
 })
 export class WebplayerComponent implements OnInit {
-  mobileview: boolean = false;
+  mobileview = false;
   innerWidth: any;
-  hidesidebar: boolean = false;
+  hidesidebar = false;
 
   constructor(private route: ActivatedRoute, private router: Router, private api: ApiService, private auth: AuthGuardService) {
     this.innerWidth = (window.screen.width);

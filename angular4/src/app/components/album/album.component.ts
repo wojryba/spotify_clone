@@ -54,7 +54,7 @@ export class AlbumComponent implements OnInit {
         this.router.navigate(['/artist']);
       },
       error => console.log(error)
-    )
+    );
   }
 
   checkAlbum() {

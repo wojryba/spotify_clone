@@ -48,7 +48,7 @@ export class CategoryComponent implements OnInit {
         this.router.navigate(['/playlist']);
       },
       error => console.log(error)
-    )
+    );
   }
 
   playPlaylist(event, i) {
@@ -60,6 +60,6 @@ export class CategoryComponent implements OnInit {
         this.music.play(i);
       },
       error => console.log(error)
-    )
+    );
   }
 }

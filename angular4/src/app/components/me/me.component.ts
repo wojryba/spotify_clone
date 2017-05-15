@@ -74,7 +74,7 @@ export class MeComponent implements OnInit {
   // ARTISTS
   openArtist(i, j) {
     if (j) {
-      console.log('YEY')
+      console.log('YEY');
     } else {
       this.api.useLink(this.artists.items[i].href).subscribe(
         response => {
@@ -120,7 +120,7 @@ export class MeComponent implements OnInit {
         this.music.play(0);
       },
       error => console.log(error)
-    )
+    );
   }
 
   // PLAYLISTS

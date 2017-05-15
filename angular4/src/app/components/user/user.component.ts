@@ -18,17 +18,17 @@ import { MusicService } from '../../services/music.service';
   ]
 })
 export class UserComponent implements OnInit {
-  private user:any;
-  private playlists:any;
+  private user: any;
+  private playlists: any;
   imgSelected;
 
   constructor(private api: ApiService, private router: Router, private music: MusicService) { }
 
   ngOnInit() {
-    this.getData()
+    this.getData();
   }
 
-  getData(){
+  getData() {
     if (this.api.user) {
       this.user = this.api.user;
       this.api.getUserPlaylists(this.user.id).subscribe(
@@ -37,7 +37,7 @@ export class UserComponent implements OnInit {
           this.playlists = res;
         },
         error => console.log(error)
-      )
+      );
     }
   }
 
@@ -49,7 +49,7 @@ export class UserComponent implements OnInit {
         this.router.navigate(['/playlist']);
       },
       error => console.log(error)
-    )
+    );
   }
 
   // show/ hide play buttons
@@ -71,7 +71,7 @@ export class UserComponent implements OnInit {
         this.music.play(i);
       },
       error => console.log(error)
-    )
+    );
   }
 
 }

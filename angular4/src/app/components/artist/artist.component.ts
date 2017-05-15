@@ -68,7 +68,7 @@ export class ArtistComponent implements OnInit {
         this.albums = res.albums;
       },
       error => console.log(error)
-    )
+    );
   }
 
   // check if artist is followed
@@ -99,7 +99,7 @@ export class ArtistComponent implements OnInit {
     );
   }
 
-  //TOP TRACKS
+  // TOP TRACKS
   // play chosen song from top tracks
   playSong(i) {
     this.music.playlist = this.topTracks;
@@ -116,7 +116,7 @@ export class ArtistComponent implements OnInit {
         this.router.navigate(['/album']);
       },
       error => console.log(error)
-    )
+    );
   }
 
   // play chosen album
@@ -155,7 +155,7 @@ export class ArtistComponent implements OnInit {
         this.view = 'overview';
       },
       error => console.log(error)
-    )
+    );
   }
 
   // play top tracks of chosen artist
@@ -168,7 +168,7 @@ export class ArtistComponent implements OnInit {
         this.music.play(0);
       },
       error => console.log(error)
-    )
+    );
   }
 
 }

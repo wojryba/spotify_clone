@@ -18,7 +18,7 @@ export class ApiService {
     if (localStorage.getItem('code')) {
       return true;
     } else {
-      return false
+      return false;
     }
   }
 
@@ -26,7 +26,7 @@ export class ApiService {
     return this.http.get('getLoginUrl');
   }
 
-  postCode(code){
+  postCode(code) {
     const encoded_data = JSON.stringify({ code });
     const headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
     const options = new RequestOptions({ headers: headers });
@@ -190,10 +190,10 @@ export class ApiService {
 
   // usermusic
   getUserMusic() {
-    return this.http.get('user/getUserMusic')
+    return this.http.get('user/getUserMusic');
   }
 
   getMe() {
-    return this.http.get('user/me')
+    return this.http.get('user/me');
   }
 }

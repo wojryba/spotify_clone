@@ -27,7 +27,7 @@ export class SearchComponent implements OnInit {
   private selected;
   private imgSelected;
   private whitespace = '&nbsp;';
-  private show = 'top'
+  private show = 'top';
 
   constructor(private api: ApiService, private music: MusicService, private router: Router) { }
 
@@ -55,7 +55,7 @@ export class SearchComponent implements OnInit {
   }
 
   // search for the query
-  searchInput(event, search){
+  searchInput(event, search) {
     clearTimeout(this.timeout);
 
     this.timeout = setTimeout(() => {
@@ -91,7 +91,7 @@ export class SearchComponent implements OnInit {
       response => {
         const res = JSON.parse(response['_body']);
         console.log(res);
-        if (res.tracks.next == this.tracks['next']) {
+        if (res.tracks.next === this.tracks['next']) {
           console.log('no more');
         } else {
           let items = this.tracks['items'];
@@ -107,7 +107,7 @@ export class SearchComponent implements OnInit {
   // ARTISTS
   openArtist(i, j) {
     if (j) {
-      console.log('YEY')
+      console.log('YEY');
     } else {
       this.api.useLink(this.artists.items[i].href).subscribe(
         response => {
@@ -137,7 +137,7 @@ export class SearchComponent implements OnInit {
       response => {
         const res = JSON.parse(response['_body']);
         console.log(res);
-        if (res.artists.next == this.artists['next']) {
+        if (res.artists.next === this.artists['next']) {
           console.log('no more');
         } else {
           let items = this.artists['items'];
@@ -171,7 +171,7 @@ export class SearchComponent implements OnInit {
         this.music.play(0);
       },
       error => console.log(error)
-    )
+    );
   }
 
   findMoreAlbums() {
@@ -179,7 +179,7 @@ export class SearchComponent implements OnInit {
       response => {
         const res = JSON.parse(response['_body']);
         console.log(res);
-        if (res.albums.next == this.albums['next']) {
+        if (res.albums.next === this.albums['next']) {
           console.log('no more');
         } else {
           let items = this.albums['items'];
@@ -225,7 +225,7 @@ export class SearchComponent implements OnInit {
       response => {
         const res = JSON.parse(response['_body']);
 
-        if (res.playlists.next == this.playlists['next']) {
+        if (res.playlists.next === this.playlists['next']) {
           console.log('no more');
         } else {
           let items = this.playlists['items'];

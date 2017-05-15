@@ -22,7 +22,7 @@ export class SidebarComponent implements OnInit {
       error => {
         console.log(error);
       }
-    )
+    );
   }
 
   logOut() {

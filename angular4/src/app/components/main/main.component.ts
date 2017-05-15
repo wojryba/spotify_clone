@@ -102,9 +102,9 @@ export class MainComponent implements OnInit {
       response => {
         const res = JSON.parse(response['_body']);
 
-        if (res.playlists.next == this.playlists['next']) {
+        if (res.playlists.next === this.playlists['next']) {
           this.show = true;
-          setTimeout(()=>this.show = false, 1000);
+          setTimeout( () => this.show = false, 1000);
         } else {
           let items = this.playlists['items'];
           items = items.concat(res.playlists.items);
@@ -114,7 +114,7 @@ export class MainComponent implements OnInit {
       },
       error => {
         this.show = true;
-        setTimeout(()=>this.show = false, 1000);
+        setTimeout( () => this.show = false, 1000);
       }
     );
   }
@@ -126,7 +126,7 @@ export class MainComponent implements OnInit {
       response => {
         const res = JSON.parse(response['_body']);
         this.api.category = res.playlists;
-        this.router.navigate(['/category'])
+        this.router.navigate(['/category']);
       },
       error => console.log(error)
     );

@@ -12,7 +12,7 @@ export class LoginComponent implements OnInit {
   constructor(private api: ApiService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
-    this.getCode()
+    this.getCode();
   }
 
   logIn() {
@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
         window.location.assign(response['_body']);
       },
       error => console.log(error)
-    )
+    );
   }
 
   logOut() {
@@ -31,21 +31,19 @@ export class LoginComponent implements OnInit {
 
   getCode() {
     if (this.route.snapshot.queryParams.code) {
-      console.log('i have the params')
       this.api.postCode(this.route.snapshot.queryParams.code).subscribe(
         response => {
           console.log('res');
           localStorage.setItem('code', response['_body']);
           setTimeout(() => {
-            this.router.navigate([''])
+            this.router.navigate(['']);
           }, 500);
         },
         error => console.log(error)
       );
     } else {
-      console.log('i dont')
       if (this.api.auth()) {
-        this.router.navigate['/login']
+        this.router.navigate(['']);
       }
     }
   }
