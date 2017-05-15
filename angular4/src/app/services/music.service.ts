@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
+import { Router } from '@angular/router';
 
 @Injectable()
 export class MusicService {
@@ -16,7 +17,7 @@ export class MusicService {
   innerWidth: any;
   audio;
 
-  constructor(private api: ApiService) {
+  constructor(private api: ApiService, private router: Router) {
     this.audio = new Audio();
 
     this.audio.ontimeupdate = () => {
@@ -162,7 +163,11 @@ export class MusicService {
        this.saved = JSON.parse(response['_body']);
      },
      error => {
-       window.location.reload();
+       if (this.api.auth) {
+         // window.location.reload();
+       } else {
+         this.router.navigate['login'];
+       }
      }
    );
  }

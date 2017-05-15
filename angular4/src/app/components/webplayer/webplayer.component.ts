@@ -30,7 +30,7 @@ export class WebplayerComponent implements OnInit {
       this.api.postCode(this.route.snapshot.queryParams.code).subscribe(
         response => {
           localStorage.setItem('code', response['_body']);
-          this.router.navigate[''];
+          setTimeout(() => this.router.navigate[''], 500);
         },
         error => console.log(error)
       );
@@ -38,7 +38,6 @@ export class WebplayerComponent implements OnInit {
       if (this.auth.canActivate()) {
         this.router.navigate['/login']
       }
-      console.log('not!');
     }
   }
 

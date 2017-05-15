@@ -20,7 +20,11 @@ export class SidebarComponent implements OnInit {
         console.log(this.user);
       },
       error => {
-        window.location.reload();
+        if (this.api.auth) {
+          // window.location.reload();
+        } else {
+          this.router.navigate['login'];
+        }
       }
     )
   }
