@@ -1,0 +1,47 @@
+<div class="main" *ngIf="playlists">
+  <header>
+    <h5 (click)="switch = 'chosen'">Chosen</h5>
+    <h5 (click)="switch = 'categories'">Geners and moods</h5>
+    <h5 (click)="switch = 'newReleses'">New Releses</h5>
+  </header>
+  <div class="chosen" *ngIf="switch == 'chosen'" [@enter]>
+    <h1>{{message}}</h1>
+    <div class="playlists">
+      <div (click)="openPlaylist(i)" *ngFor="let item of playlists.items; let i = index" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+item.images[0].url+')'" class="playlist">
+        <div class="background" *ngIf="imgSelected == i" [@enter]>
+          <i (click)="playPlaylist($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+        </div>
+      </div>
+    </div>
+    <h3 (click)="findMore()">Find More</h3>
+    <h5 *ngIf="show">There is no more for now!</h5>
+  </div>
+
+  <div class="chosen" *ngIf="switch == 'categories'" [@enter]>
+    <h1>Geners and moods</h1>
+    <div class="playlists">
+      <div (click)="openCategory(i)" class="playlist" *ngFor="let item of categories.items; let i = index">
+        <div  (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+item.icons[0].url+')'" class="playlistImg">
+          <div class="background" *ngIf="imgSelected == i" [@enter]>
+          </div>
+        </div>
+        <h3>{{item.name}}</h3>
+      </div>
+    </div>
+  </div>
+
+  <div class="chosen" *ngIf="switch == 'newReleses'" [@enter]>
+    <h1>New Releses</h1>
+    <div class="playlists">
+      <div (click)="openAlbum(i)" class="playlist" *ngFor="let item of newReleses.items; let i = index">
+        <div  (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+item.images[0].url+')'" class="playlistImg">
+          <div class="background" *ngIf="imgSelected == i" [@enter]>
+            <i (click)="playAlbum($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+          </div>
+        </div>
+        <h3>{{item.name}}</h3>
+        <h3 *ngFor="let artist of item.artists; let j = index"><span (click)="openArtist($event, i, j)">{{artist.name}}</span></h3>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,43 @@
+.playlistInfo {
+  width: 25%;
+  height: 100%;
+  margin-left: 12%;
+  margin-top: 2.5%;
+  float: left;
+  text-align: center;
+}
+
+
+.tracks {
+  width: 55%;
+  height: 100%;
+  float: right;
+}
+
+.tracks p {
+  display: inline-block;
+}
+
+.tracks ul {
+  list-style-type: none;
+}
+
+.playPlaylist {
+  background-color: black;
+  width: 100%;
+  height: 100%;
+}
+
+@media (max-width: 768px) {
+  .playlistInfo {
+    float: none;
+    width: 60%;
+    margin: auto;
+    min-height: 600px;
+  }
+
+  .tracks {
+    float: left;
+    width: 100%;
+  }
+}

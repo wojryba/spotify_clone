@@ -1,0 +1,36 @@
+.sidebar a {
+  color:inherit;
+  text-decoration: none;
+}
+
+.borededBox {
+  border-bottom: 1px solid #4E5052;
+  margin-top: 6%;
+  padding-bottom: 6%;
+  padding-left: 6%;
+}
+
+.searchBox {
+  border-bottom: 1px solid #4E5052;
+  margin-top: 6%;
+  padding-left: 6%;
+}
+
+#searchIcon {
+  position: relative;
+  left: 85%;
+  bottom: 32px;
+}
+
+.user {
+  position: relative;
+  top: 25%;
+  border-top: 1px solid #4E5052;
+  padding-left: 6%;
+}
+
+@media (max-width: 1024px) {
+  #searchIcon {
+    left: 80%;
+  }
+}

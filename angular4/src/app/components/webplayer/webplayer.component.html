@@ -1,0 +1,5 @@
+<div class="webplayer">
+  <app-sidebar *ngIf="!hidesidebar"></app-sidebar>
+  <router-outlet></router-outlet>
+  <app-player [mobileview]="mobileview" (showsiebar)="showsiebar($event)"></app-player>
+</div>

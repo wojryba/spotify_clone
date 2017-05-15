@@ -1,0 +1,135 @@
+.info {
+  position: relative;
+  top: 5%;
+  left: 1%;
+  width: 15%;
+  height: 100%;
+}
+
+.info img {
+  float: left;
+  width: auto;
+  height: auto;
+  height: 80%;
+  margin-right: 2%;;
+}
+
+.info i {
+  float: right;
+  margin-top: -20%;
+  margin-right: 5%;
+}
+
+.controls {
+  position: relative;
+  left: 40%;
+  bottom: 100%;
+  padding: 1%;
+  width: 30%;
+  min-height: 110px;
+}
+
+.controls button {
+  background-color: inherit;
+  border: none;
+}
+
+.buttons {
+  text-align: center;
+}
+
+.progressBar {
+  padding:10px;
+}
+
+.progressBar md-slider {
+  width: 90%;
+  margin-top: -15px;
+}
+
+.progressBar md-progress-bar {
+  width: 90%;
+  height: 10px;
+}
+
+#duration {
+  position: fixed;
+  bottom: 5%;
+  right: 31.5%;
+}
+
+#currentTime {
+  position: fixed;
+  bottom: 5%;
+  right: 59%;
+}
+
+.volumeChange {
+  position: relative;
+  left: 85%;
+  bottom: 187%;
+  padding: 1%;
+  width: 200px;
+  height: 70px;
+}
+
+@media (max-width: 1024px) {
+  .info {
+    width: 35%;
+  }
+
+  .volumeChange {
+    position: relative;
+    left: 78%;
+    bottom: 213%;
+    padding: 1%;
+    width: 200px;
+    height: 70px;
+  }
+
+  #duration {
+    position: fixed;
+    bottom: 5%;
+    right: 29%;
+  }
+
+  #currentTime {
+    position: fixed;
+    bottom: 5%;
+    right: 59%;
+  }
+
+}
+
+@media (max-width: 425px) {
+  .controls {
+    position: relative;
+    left: 62%;
+    bottom: 85%;
+    padding: 1%;
+    width: 40%;
+    min-height: 110px;
+  }
+
+  .volumeChange {
+    left: 55%;
+    bottom: 145%;
+    padding: 0%;
+  }
+
+  .progressBar {
+    width: 127px;
+  }
+
+  .info {
+    left: 13%;
+    width: 40%;
+    height: 90%;
+  }
+
+  #sidebarShow {
+    position: relative;
+    right: 102%;
+    top: 50%;
+  }
+}

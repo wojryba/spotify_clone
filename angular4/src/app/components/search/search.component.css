@@ -1,0 +1,34 @@
+.search {
+  background-color: #242424;
+  width: 87%;
+  height: 110px;
+  margin-left: 10%;
+  text-align: left;
+}
+
+.search input {
+  border: none;
+  background: inherit;
+  margin-left: 4%;
+  font-size: 4em;
+}
+
+#label {
+  margin-left: 4%;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+.results {
+  width: 87%;
+  margin-left: 10%;
+}
+
+.results header {
+  background-color: grey;
+}
+
+.results header h4 {
+  display: inline-block;
+  margin: 2% 4%;
+}

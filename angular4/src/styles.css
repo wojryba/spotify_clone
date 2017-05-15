@@ -1,0 +1,171 @@
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
+
+.webplayer{
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 100%;
+  background: #424242; /* Old browsers */
+  background: -moz-linear-gradient(top, #424242 0%, #3d3d3d 5%, #3e3e3e 6%, #383838 10%, #383838 12%, #343434 14%, #333333 16%, #2a2a2a 25%, #292929 28%, #232323 31%, #232323 33%, #1f1f1f 35%, #1a1a1a 42%, #0e0e0e 53%, #0e0e0e 55%, #0a0a0a 57%, #0b0b0b 57%, #000000 68%, #000000 82%, #616161 100%); /* FF3.6-15 */
+  background: -webkit-linear-gradient(top, #424242 0%,#3d3d3d 5%,#3e3e3e 6%,#383838 10%,#383838 12%,#343434 14%,#333333 16%,#2a2a2a 25%,#292929 28%,#232323 31%,#232323 33%,#1f1f1f 35%,#1a1a1a 42%,#0e0e0e 53%,#0e0e0e 55%,#0a0a0a 57%,#0b0b0b 57%,#000000 68%,#000000 82%,#616161 100%); /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to bottom, #424242 0%,#3d3d3d 5%,#3e3e3e 6%,#383838 10%,#383838 12%,#343434 14%,#333333 16%,#2a2a2a 25%,#292929 28%,#232323 31%,#232323 33%,#1f1f1f 35%,#1a1a1a 42%,#0e0e0e 53%,#0e0e0e 55%,#0a0a0a 57%,#0b0b0b 57%,#000000 68%,#000000 82%,#616161 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#424242', endColorstr='#616161',GradientType=0 ); /* IE6-9 */
+
+
+  color: white;
+}
+
+.sidebar {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  height: 100%;
+  width: 15%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.main {
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  margin: auto;
+  margin-left: 5%;
+  width: 100%;
+  height: 85%;
+  overflow-y: scroll;
+  z-index: -1;
+}
+
+.main h5 {
+  display: inline-block;
+  margin: 2%;
+}
+
+.main header {
+  text-align: center;
+}
+
+.chosen {
+  text-align: center;
+}
+
+.player{
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+  width: 100%;
+  height: 15%;
+  background: #1e1e1e;
+  z-index: 20;
+}
+
+.playlists {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  max-width: 1050px;
+  margin: auto;
+}
+
+.playlist {
+  display: flex;
+  flex-direction:column;
+  margin: 1%;
+  width: 25%;
+  min-width: 300px;
+  min-height: 300px;
+}
+
+.playlistImg {
+  min-width: 300px;
+  min-height: 300px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: auto;
+  width: 80%;
+  height: auto;
+}
+
+.background {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.background i {
+  position: relative;
+  top: 40%;
+}
+
+.background {
+  width: 100%;
+  height: 300px;
+}
+
+.generalResultsSections {
+  text-align: center;
+}
+
+.tracks p {
+  display: inline;
+}
+
+.tracks {
+  margin-left: 5%;
+}
+
+.tracks ul {
+  list-style-type: none;
+}
+
+.aroundHighlight {
+  color: #8D8B8B;
+}
+
+.highlight {
+  color: #8D8B8B;
+}
+
+.highlight:hover {
+  text-decoration: underline;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.underline:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.center {
+  text-align: center;
+}
+
+@media (max-width: 1024px) {
+  .main {
+    margin-left: 15%;
+    width: 85%;
+  }
+
+  .searchComponent {
+    margin-left: -10%;
+  }
+
+  .sidebar {
+    width: 16%;
+    z-index: 10;
+  }
+}
+
+@media (max-width: 425px) {
+  .main {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .sidebar {
+    background-color: black;
+    width: 80%;
+  }
+}

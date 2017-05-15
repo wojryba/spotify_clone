@@ -1,0 +1,182 @@
+<div class="main" (scroll)="onScroll($event)" track-scroll>
+  <div class="searchComponent">
+    <header class="search">
+      <label><p id="label">Search for tracks, artists, playlists, albums...</p>
+        <input #search placeholder="Start writing..." value={{search.value}} (keyup)="searchInput($event, search)" />
+      </label>
+    </header>
+    <div class=results *ngIf="tracks">
+      <header>
+        <h4 (click)="show = 'top'">Top Results</h4>
+        <h4 (click)="show = 'artists'">Artists</h4>
+        <h4 (click)="show = 'albums'">Albums</h4>
+        <h4 (click)="show = 'playlists'">Plylists</h4>
+        <h4 (click)="show = 'tracks'">Tracks</h4>
+      </header>
+
+      <!-- TOP RESULTS OF EVERYTHING SECTION -->
+      <div class="generalResults" *ngIf="show === 'top'">
+
+        <!-- TRACK SECTION -->
+        <div class="tracks" *ngIf="tracks">
+          <ul *ngFor="let track of overview.tracks; let i = index" (mouseenter)="showPlay(i)" (mouseleave)="hidePlay(i)">
+            <li>
+              <h4> <span *ngIf="selected !== i; else play">{{i + 1}}.</span>  {{track.name}}</h4>
+              <p *ngFor="let artist of track.artists; let j = index"><span (click)="openArtist(i, j)" class="highlight">{{artist.name}}</span><span [innerHTML]="whitespace"></span></p> <br />
+              <p class="aroundHighlight">Album: <span class="highlight">{{track.album.name}}</span></p>
+            </li>
+            <ng-template #play><i (click)="playSong(i)" class="fa fa-play" aria-hidden="true" [@enter]></i></ng-template>
+          </ul>
+        </div>
+
+        <!-- ARTIST SECTION -->
+        <div class="generalResultsSections">
+          <h1>Artists:</h1>
+          <div class="playlists" *ngIf="playlists">
+            <div class="playlist" *ngFor="let artist of overview.artists; let i = index">
+              <div *ngIf="artist.images[0]; else placeHolderImg;" (click)="openArtist(i)" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+artist.images[0].url+')'" class="playlistImg">
+                <div class="background" *ngIf="imgSelected == i" [@enter]>
+                  <i (click)="playArtist($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+                </div>
+              </div>
+              <h3 (click)=openArtist(i)>{{artist.name}}</h3>
+              <ng-template #placeHolderImg>
+                <div (click)="openArtist(i)" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+'../../../assets/placeholder.png'+')'" class="playlistImg">
+                  <div class="background" *ngIf="imgSelected == i" [@enter]>
+                    <i (click)="playArtist($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+
+        <!-- ALBUMS SECTION -->
+        <div class="generalResultsSections">
+          <h1>Albums:</h1>
+          <div class="playlists" *ngIf="playlists">
+            <div class="playlist" *ngFor="let album of overview.albums; let i = index">
+              <div *ngIf="album.images[0]; else placeHolderImg;" (click)="openAlbum(i)" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+album.images[0].url+')'" class="playlistImg">
+                <div class="background" *ngIf="imgSelected == i" [@enter]>
+                  <i (click)="playAlbum($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+                </div>
+              </div>
+              <h3 (click)=openAlbum(i)>{{album.name}}</h3>
+              <p *ngFor="let artist of album.artists; let j = index"><span (click)="openArtist(i, j)">{{artist.name}}</span><span [innerHTML]="whitespace"></span></p>
+              <ng-template #placeHolderImg>
+                <div (click)="openAlbum(i)" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+'../../../assets/placeholder.png'+')'" class="playlistImg">
+                  <div class="background" *ngIf="imgSelected == i" [@enter]>
+                    <i (click)="playAlbum($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+
+        <!-- PLAYLISTS SECTION -->
+        <div class="generalResultsSections">
+          <h1>Playlists</h1>
+          <div class="playlists" *ngIf="playlists">
+            <div class="playlist" *ngFor="let playlist of overview.playlists; let i = index">
+              <div *ngIf="playlist.images[0]; else placeHolderImg;" (click)="openPlaylist(i)" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+playlist.images[0].url+')'" class="playlistImg">
+                <div class="background" *ngIf="imgSelected == i" [@enter]>
+                  <i (click)="playPlaylist($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+                </div>
+              </div>
+              <h3 (click)=openPlaylist(i)>{{playlist.name}}</h3>
+              <ng-template #placeHolderImg>
+                <div (click)="openPlaylist(i)" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+'../../../assets/placeholder.png'+')'" class="playlistImg">
+                  <div class="background" *ngIf="imgSelected == i" [@enter]>
+                    <i (click)="playPlaylist($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+                  </div>
+                </div>
+              </ng-template>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- SPECIFIC SECTIONS -->
+    <div class="generalResultsSections" *ngIf="show === 'artists'">
+      <h1>Artists:</h1>
+      <div class="playlists" *ngIf="playlists">
+        <div class="playlist" *ngFor="let artist of artists.items; let i = index">
+          <div *ngIf="artist.images[0]; else placeHolderImg;" (click)="openArtist(i)" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+artist.images[0].url+')'" class="playlistImg">
+            <div class="background" *ngIf="imgSelected == i" [@enter]>
+              <i (click)="playArtist($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+            </div>
+          </div>
+          <h3 (click)=openArtist(i)>{{artist.name}}</h3>
+          <ng-template #placeHolderImg>
+            <div (click)="openArtist(i)" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+'../../../assets/placeholder.png'+')'" class="playlistImg">
+              <div class="background" *ngIf="imgSelected == i" [@enter]>
+                <i (click)="playArtist($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <h3 (click)="findMoreArtists()" class="highlight">Find More</h3>
+    </div>
+
+    <div class="generalResultsSections" *ngIf="show === 'albums'">
+      <h1>Albums:</h1>
+      <div class="playlists" *ngIf="playlists">
+        <div class="playlist" *ngFor="let album of albums.items; let i = index">
+          <div *ngIf="album.images[0]; else placeHolderImg;" (click)="openAlbum(i)" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+album.images[0].url+')'" class="playlistImg">
+            <div class="background" *ngIf="imgSelected == i" [@enter]>
+              <i (click)="playAlbum($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+            </div>
+          </div>
+          <h3 (click)=openAlbum(i)>{{album.name}}</h3>
+          <p *ngFor="let artist of album.artists; let j = index"><span (click)="openArtist(i, j)">{{artist.name}}</span><span [innerHTML]="whitespace"></span></p>
+          <ng-template #placeHolderImg>
+            <div (click)="openAlbum(i)" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+'../../../assets/placeholder.png'+')'" class="playlistImg">
+              <div class="background" *ngIf="imgSelected == i" [@enter]>
+                <i (click)="playAlbum($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <h3 (click)="findMoreAlbums()" class="highlight">Find More</h3>
+    </div>
+
+    <div class="generalResultsSections" *ngIf="show === 'playlists'">
+      <h1>Playlists:</h1>
+      <div class="playlists" *ngIf="playlists">
+        <div class="playlist" *ngFor="let playlist of playlists.items; let i = index">
+          <div *ngIf="playlist.images[0]; else placeHolderImg;" (click)="openPlaylist(i)" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+playlist.images[0].url+')'" class="playlistImg">
+            <div class="background" *ngIf="imgSelected == i" [@enter]>
+              <i (click)="playPlaylist($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+            </div>
+          </div>
+          <h3 (click)=openPlaylist(i)>{{playlist.name}}</h3>
+          <ng-template #placeHolderImg>
+            <div (click)="openPlaylist(i)" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+'../../../assets/placeholder.png'+')'" class="playlistImg">
+              <div class="background" *ngIf="imgSelected == i" [@enter]>
+                <i (click)="playPlaylist($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+              </div>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+      <h3 (click)="findMorePlaylists()" class="highlight">Find More</h3>
+    </div>
+
+    <div class="tracks" *ngIf="show === 'tracks'">
+      <h1>Tracks:</h1>
+      <ul *ngFor="let track of tracks.items; let i = index" (mouseenter)="showPlay(i)" (mouseleave)="hidePlay(i)">
+        <li>
+          <h4> <span *ngIf="selected !== i; else play">{{i + 1}}.</span>  {{track.name}}</h4>
+          <p *ngFor="let artist of track.artists; let j = index"><span (click)="openArtist(i, j)" class="highlight">{{artist.name}}</span><span [innerHTML]="whitespace"></span></p> <br />
+          <p class="aroundHighlight">Album: <span class="highlight">{{track.album.name}}</span></p>
+        </li>
+        <ng-template #play><i (click)="playSong(i)" class="fa fa-play" aria-hidden="true" [@enter]></i></ng-template>
+      </ul>
+      <h3 (click)="findMoreTracks()" class="highlight">Find More</h3>
+    </div>
+  </div>
+  </div>
+</div>

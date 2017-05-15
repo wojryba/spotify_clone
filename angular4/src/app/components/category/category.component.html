@@ -1,0 +1,13 @@
+<div class="main chosen">
+  <h1>Popular Playlists:</h1>
+  <div class="playlists" *ngIf="playlists">
+    <div class="playlist" *ngFor="let item of playlists.items; let i = index">
+      <div (click)="openPlaylist(i)" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+item.images[0].url+')'" class="playlistImg">
+        <div class="background" *ngIf="imgSelected == i" [@enter]>
+          <i (click)="playPlaylist($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+        </div>
+      </div>
+      <h3>{{item.name}}</h3>
+    </div>
+  </div>
+</div>

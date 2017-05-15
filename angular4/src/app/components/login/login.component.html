@@ -1,0 +1,13 @@
+<div class="webplayer">
+  <div class="login">
+    <h1>This is an Spotify Clone.</h1>
+    <h2>You can check out app's features at <a href="https://github.com/wojryba/spotify_clone">GitHub</a> </h2>
+    <h2>Login to proceed:</h2>
+    <a class="btn btn-primary btn-lg" *ngIf="api.auth(); else logout" (click)="logOut()">Log Out</a>
+  </div>
+</div>
+
+
+<ng-template #logout>
+  <a class="btn btn-primary btn-lg" (click)="logIn()">Log In</a>
+</ng-template>
