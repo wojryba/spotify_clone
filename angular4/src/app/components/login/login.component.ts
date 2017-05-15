@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -8,9 +9,10 @@ import { ApiService } from '../../services/api.service';
 })
 export class LoginComponent implements OnInit {
 
-  constructor(private api: ApiService) { }
+  constructor(private api: ApiService, private route: ActivatedRoute, private router: Router) { }
 
   ngOnInit() {
+    this.getCode()
   }
 
   logIn() {
@@ -25,6 +27,24 @@ export class LoginComponent implements OnInit {
   logOut() {
     console.log('logout');
     localStorage.removeItem('code');
+  }
+
+  getCode() {
+    if (this.route.snapshot.queryParams.code) {
+      this.api.postCode(this.route.snapshot.queryParams.code).subscribe(
+        response => {
+          localStorage.setItem('code', response['_body']);
+          setTimeout(() => {
+            this.router.navigate([''])
+          }, 500);
+        },
+        error => console.log(error)
+      );
+    } else {
+      if (this.api.auth()) {
+        this.router.navigate['/login']
+      }
+    }
   }
 
 }

@@ -44,9 +44,9 @@ app.use('/search', search);
 app.post('/callback', (req, res) => {
   var code = req.body.code;
 
-// Retrieve an access token and a refresh token
-spotifyApi.authorizationCodeGrant(code)
-  .then(function(data) {
+  // Retrieve an access token and a refresh token
+  spotifyApi.authorizationCodeGrant(code)
+    .then(function(data) {
     // Set the access token on the API object to use it in later calls
     spotifyApi.setAccessToken(data.body['access_token']);
     spotifyApi.setRefreshToken(data.body['refresh_token']);

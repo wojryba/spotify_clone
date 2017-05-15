@@ -22,23 +22,6 @@ export class WebplayerComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.getCode()
-  }
-
-  getCode() {
-    if (this.route.snapshot.queryParams.code) {
-      this.api.postCode(this.route.snapshot.queryParams.code).subscribe(
-        response => {
-          localStorage.setItem('code', response['_body']);
-          setTimeout(() => this.router.navigate[''], 500);
-        },
-        error => console.log(error)
-      );
-    } else {
-      if (this.auth.canActivate()) {
-        this.router.navigate['/login']
-      }
-    }
   }
 
 

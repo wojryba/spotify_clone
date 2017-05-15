@@ -163,11 +163,7 @@ export class MusicService {
        this.saved = JSON.parse(response['_body']);
      },
      error => {
-       if (this.api.auth) {
-         // window.location.reload();
-       } else {
-         this.router.navigate['login'];
-       }
+       console.log(error);
      }
    );
  }

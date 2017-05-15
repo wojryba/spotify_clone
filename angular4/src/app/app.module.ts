@@ -28,8 +28,8 @@ import 'hammerjs';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: '', component: WebplayerComponent, children: [
-    {path: '', component: MainComponent},
+  {path: '', component: WebplayerComponent, canActivate: [AuthGuardService], children: [
+    {path: '', component: MainComponent, canActivate: [AuthGuardService]},
     {path: 'playlist', component: PlaylistComponent, canActivate: [AuthGuardService]},
     {path: 'artist', component: ArtistComponent, canActivate: [AuthGuardService]},
     {path: 'album', component: AlbumComponent, canActivate: [AuthGuardService]},

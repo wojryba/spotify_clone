@@ -54,12 +54,7 @@ export class MainComponent implements OnInit {
         this.playlists = res.playlists;
       },
       error => {
-        if (this.api.auth) {
-
-          // window.location.reload();
-        } else {
-          this.router.navigate['login'];
-        }
+        console.log(error);
       }
     );
   }
