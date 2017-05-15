@@ -616,6 +616,10 @@ var MainComponent = (function () {
             _this.playlists = res.playlists;
         }, function (error) {
             console.log(error);
+            if (_this.api.auth()) {
+                localStorage.clear();
+                _this.router.navigate(['/login']);
+            }
         });
     };
     // get categories and releses
@@ -1355,6 +1359,10 @@ var SidebarComponent = (function () {
             console.log(_this.user);
         }, function (error) {
             console.log(error);
+            if (_this.api.auth()) {
+                localStorage.clear();
+                _this.router.navigate(['/login']);
+            }
         });
     };
     SidebarComponent.prototype.logOut = function () {
@@ -2258,6 +2266,10 @@ var MusicService = (function () {
             _this.saved = JSON.parse(response['_body']);
         }, function (error) {
             console.log(error);
+            if (_this.api.auth()) {
+                localStorage.clear();
+                _this.router.navigate(['/login']);
+            }
         });
     };
     return MusicService;

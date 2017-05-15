@@ -21,6 +21,10 @@ export class SidebarComponent implements OnInit {
       },
       error => {
         console.log(error);
+        if (this.api.auth()) {
+          localStorage.clear();
+          this.router.navigate(['/login']);
+        }
       }
     );
   }
