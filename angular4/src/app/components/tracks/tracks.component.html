@@ -1,0 +1,8 @@
+<ul *ngFor="let track of tracks; let i = index" (mouseenter)="showPlay(i)" (mouseleave)="hidePlay(i)">
+  <li>
+    <h4> <span *ngIf="selected !== i; else play">{{i + 1}}.</span>  {{track.name}}</h4>
+    <p *ngFor="let artist of track.artists; let j = index"><span *ngIf="track.artists" (click)="openArtist(i, j)" class="highlight">{{artist.name}}</span><span *ngIf="track.artists" [innerHTML]="whitespace"></span></p> <br />
+    <p *ngIf="track.album" class="aroundHighlight">Album: <span (click)="openAlbum(i)" class="highlight">{{track.album.name}}</span></p>
+  </li>
+  <ng-template #play><i (click)="playSong(i)" class="fa fa-play" aria-hidden="true" [@enter]></i></ng-template>
+</ul>

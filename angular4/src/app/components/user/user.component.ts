@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
-import { Router } from '@angular/router';
 import { trigger, state, style, animate, transition } from '@angular/animations';
-import { MusicService } from '../../services/music.service';
 
 @Component({
   selector: 'app-user',
@@ -20,9 +18,8 @@ import { MusicService } from '../../services/music.service';
 export class UserComponent implements OnInit {
   private user: any;
   private playlists: any;
-  imgSelected;
 
-  constructor(private api: ApiService, private router: Router, private music: MusicService) { }
+  constructor(private api: ApiService) { }
 
   ngOnInit() {
     this.getData();
@@ -39,39 +36,6 @@ export class UserComponent implements OnInit {
         error => console.log(error)
       );
     }
-  }
-
-  openPlaylist(i) {
-    this.api.useLink(this.playlists.items[i].href).subscribe(
-      response => {
-        const res = JSON.parse(response['_body']);
-        this.api.playlist = res;
-        this.router.navigate(['/playlist']);
-      },
-      error => console.log(error)
-    );
-  }
-
-  // show/ hide play buttons
-  showBackgroundPlay(i) {
-    this.imgSelected = i;
-  }
-
-  hideBackgroundPlay(i) {
-    this.imgSelected = undefined;
-  }
-
-  // play selected playlist
-  playPlaylist(event, i) {
-    event.stopPropagation();
-    this.api.useLink(this.playlists.items[i].href).subscribe(
-      response => {
-        const res = JSON.parse(response['_body']);
-        this.music.playlist = res.tracks.items;
-        this.music.play(i);
-      },
-      error => console.log(error)
-    );
   }
 
 }

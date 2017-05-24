@@ -6,7 +6,7 @@ const request = require('request');
 require('dotenv').config();
 const spotifyApi = require('./spotify');
 
-const scopes = ['user-read-private', 'user-read-email', 'playlist-read-private', 'playlist-modify-public', 'playlist-modify-private', 'user-follow-modify', 'user-follow-read', 'user-library-read', 'user-library-modify'];
+const scopes = ['user-read-private', 'user-read-email', 'playlist-read-private', 'playlist-modify-public', 'playlist-modify-private', 'user-follow-modify', 'user-follow-read', 'user-library-read', 'user-library-modify', 'user-read-private'];
 const state = 'some-state-of-my-choice';
 
 const authorizeURL = spotifyApi.createAuthorizeURL(scopes);
@@ -57,9 +57,9 @@ app.post('/callback', (req, res) => {
 })
 
 // All remaining requests redirect to angular.
-app.get('*', function(request, response) {
+/* app.get('*', function(request, response) {
   response.sendFile(path.resolve(__dirname, './dist/', 'index.html'));
-});
+}); */
 
 app.listen(port, function(){
   console.log("connected to server on port " + port);

@@ -16,7 +16,7 @@
 
 
 .topTracks {
-  text-align: center;
+  text-align: left;
   max-width: 1050px;
   max-height: 350px;
   overflow-y: scroll;

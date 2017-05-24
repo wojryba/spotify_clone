@@ -23,16 +23,9 @@ export class PlaylistComponent implements OnInit {
   private whitespace = '&nbsp;';
   private show = false;
   private followed;
+  private saved;
 
   constructor(private api: ApiService, private music: MusicService, private router: Router) { }
-
-  showPlay(i) {
-    this.selected = i;
-  }
-
-  hidePlay(i) {
-    this.selected = undefined;
-  }
 
   ngOnInit() {
     if (this.api.playlist) {
@@ -42,17 +35,22 @@ export class PlaylistComponent implements OnInit {
   }
 
   checkIfPlaylistFollowed() {
-    this.api.checkIfPlaylistFollowed(this.playlist.owner.id, this.playlist.id).subscribe(
-      response => {
-        this.followed = JSON.parse(response['_body']);
-      },
-      error => console.log(error)
-    );
-  }
-
-  playSong(i) {
-    this.music.playlist = this.playlist.tracks.items;
-    this.music.play(i);
+    if (this.playlist.owner) {
+      this.api.checkIfPlaylistFollowed(this.playlist.owner.id, this.playlist.id).subscribe(
+        response => {
+          this.followed = JSON.parse(response['_body']);
+          console.log(this.followed);
+        },
+        error => console.log(error)
+      );
+    } else {
+      this.api.checkIfAlbumSaved(this.playlist.id).subscribe(
+        response => {
+          this.saved = JSON.parse(response['_body']);
+        },
+        error => console.log(error)
+      );
+    }
   }
 
   // OPEN ARTIST

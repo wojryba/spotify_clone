@@ -1,23 +1,32 @@
 <div class="main" *ngIf="playlist">
   <div class="playlistInfo">
+
     <div class="playlistImg" [style.background-image]="'url('+playlist.images[0].url+')'" (mouseenter)="show = true" (mouseleave)="show = false">
       <div class="background" *ngIf="show" [@enter]>
         <i (click)="playSong(0)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
       </div>
     </div>
+
     <h2>{{playlist.name}}</h2>
-    <p class="aroundHighlight" (click)="openUser()">Owner: <span class="highlight">{{playlist.owner.id}}</span></p>
+
+    <!-- show link to creator if playlist is viewed -->
+    <p *ngIf="playlist.owner" class="aroundHighlight" (click)="openUser()">Owner: <span class="highlight">{{playlist.owner.id}}</span></p>
+    <p *ngFor="let artist of playlist.artists; let i"><span *ngIf="playlist.artists" (click)="openArtist(i)" class="highlight">{{artist.name}}</span></p>
     <p class="aroundHighlight">Tracks: {{playlist.tracks.items.length}}</p>
-    <button (click)="playSong(0)" class="btn btn-success">Play!</button>
-    <h2 *ngIf="followed; else follow" (click)="unFollowPlaylist()">Unfollow</h2>
+
+    <!-- show play button if playlist is viewed -->
+    <button *ngIf="playlist.owner" (click)="playSong(0)" class="btn btn-success">Play!</button>
+
+    <!-- show follow or unfollow if playlist is viewed -->
+    <h2 *ngIf="followed; else follow" (click)="unFollowPlaylist()"><span *ngIf="playlist.owner">Unfollow</span></h2>
+    <ng-template #follow><h2 (click)="followPlaylist()"><span *ngIf="playlist.owner">Follow</span></h2></ng-template>
+
+    <!-- show save or delete if album is viewed -->
+    <h4 *ngIf="saved; else save" (click)="deleteAlbum()" class="highlight"><span *ngIf="playlist.artists">Delete</span></h4>
+    <ng-template #save><h4 (click)="saveAlbum()" class="highlight"><span *ngIf="playlist.artists">Save</span></h4></ng-template>
+
   </div>
   <div class="tracks" *ngIf="playlist.tracks">
-    <ul *ngFor="let item of playlist.tracks.items; let i = index" (mouseenter)="showPlay(i)" (mouseleave)="hidePlay(i)">
-      <li ><h4> <span *ngIf="selected !== i; else play">{{i + 1}}.</span> {{item.track.name}}</h4>
-        <p *ngFor="let artist of item.track.artists; let j = index"><span (click)="artistR(i, j)" class="highlight">{{artist.name}}</span><span [innerHTML]="whitespace"><i class="fa fa-circle" aria-hidden="true"></i></span></p></li>
-      <ng-template #play><i (click)="playSong(i)" class="fa fa-play" aria-hidden="true" [@enter]></i></ng-template>
-    </ul>
+    <app-tracks [tracks]="playlist.tracks.items"></app-tracks>
   </div>
 </div>
-
-<ng-template #follow><h2 (click)="followPlaylist()">Follow</h2></ng-template>

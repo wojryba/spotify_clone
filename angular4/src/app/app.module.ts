@@ -13,12 +13,13 @@ import { MainComponent } from './components/main/main.component';
 import { PlayerComponent } from './components/player/player.component';
 import { PlaylistComponent } from './components/playlist/playlist.component';
 import { ArtistComponent } from './components/artist/artist.component';
-import { AlbumComponent } from './components/album/album.component';
 import { UserComponent } from './components/user/user.component';
 import { CategoryComponent } from './components/category/category.component';
 import { SearchComponent } from './components/search/search.component';
 import { MeComponent } from './components/me/me.component';
 import { LoginComponent } from './components/login/login.component';
+import { TracksComponent } from './components/tracks/tracks.component';
+import { PlaylistsComponent } from './components/playlists/playlists.component';
 
 import { ApiService } from './services/api.service';
 import { AuthGuardService } from './services/auth-guard.service';
@@ -26,13 +27,13 @@ import { MusicService } from './services/music.service';
 
 import 'hammerjs';
 
+
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: '', component: WebplayerComponent, canActivate: [AuthGuardService], children: [
     {path: '', component: MainComponent, canActivate: [AuthGuardService]},
     {path: 'playlist', component: PlaylistComponent, canActivate: [AuthGuardService]},
     {path: 'artist', component: ArtistComponent, canActivate: [AuthGuardService]},
-    {path: 'album', component: AlbumComponent, canActivate: [AuthGuardService]},
     {path: 'user', component: UserComponent, canActivate: [AuthGuardService]},
     {path: 'category', component: CategoryComponent, canActivate: [AuthGuardService]},
     {path: 'search', component: SearchComponent, canActivate: [AuthGuardService]},
@@ -51,12 +52,13 @@ const appRoutes: Routes = [
     PlayerComponent,
     PlaylistComponent,
     ArtistComponent,
-    AlbumComponent,
     UserComponent,
     CategoryComponent,
     SearchComponent,
     MeComponent,
     LoginComponent,
+    TracksComponent,
+    PlaylistsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,36 @@
+<div class="playlists" *ngIf="playlists">
+
+  <div class="playlist" *ngFor="let playlist of playlists; let i = index">
+
+    <!-- if we are in relatedArtists round the borders -->
+    <div *ngIf="round; else normal;" (click)="artistRedirect(i)" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+playlist.images[0].url+')'" class="playlistImg round">
+      <div class="background round" *ngIf="imgSelected == i" [@enter]>
+        <i (click)="playPlaylist($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+      </div>
+    </div>
+
+    <!-- playlit img, if not present, put in placeholder -->
+    <ng-template #normal>
+      <div *ngIf="playlist.images[0]; else placeHolderImg;" (click)="openArtistOrPlaylist(i)" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+playlist.images[0].url+')'" class="playlistImg">
+        <div class="background" *ngIf="imgSelected == i" [@enter]>
+          <i (click)="playPlaylist($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+        </div>
+      </div>
+    </ng-template>
+
+    <ng-template #placeHolderImg>
+      <div (click)="openArtistOrPlaylist(i)" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+'../../../assets/placeholder.png'+')'" class="playlistImg">
+        <div class="background" *ngIf="imgSelected == i" [@enter]>
+          <i (click)="playPlaylist($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
+        </div>
+      </div>
+    </ng-template>
+
+    <!-- open playlist or artist -->
+    <h3 (click)=openArtistOrPlaylist(i)>{{playlist.name}}</h3>
+
+    <!-- if artists present, show them -->
+    <p *ngFor="let artist of playlist.artists; let j = index"><span *ngIf="playlist.artists" (click)="openArtist(i, j)">{{artist.name}}</span><span *ngIf="playlist.artists" [innerHTML]="whitespace"></span></p>
+
+  </div>
+</div>

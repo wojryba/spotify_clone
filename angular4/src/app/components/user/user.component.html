@@ -4,23 +4,7 @@
       <br />
       <h1>User's playlists:</h1>
   </div>
-  <div *ngIf="playlists">
-    <div class=playlists>
-      <div (click)="openPlaylist(i)" class="playlist" *ngFor="let item of playlists.items; let i = index">
-        <div *ngIf="item.images[0]; else placeHolderImg" [style.background-image]="'url('+item.images[0].url+')'" class="playlistImg" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)">
-          <div class="background" *ngIf="imgSelected == i" [@enter]>
-            <i (click)="playPlaylist($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
-          </div>
-        </div>
-        <h5 (click)="openPlaylist(i)">{{item.name}}</h5>
-        <ng-template #placeHolderImg>
-          <div (click)="openPlaylist(i)" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+'../../../assets/placeholder.png'+')'" class="playlistImg">
-            <div class="background" *ngIf="imgSelected == i" [@enter]>
-              <i (click)="playPlaylist($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
-            </div>
-          </div>
-        </ng-template>
-      </div>
-    </div>
+  <div class="generalResultsSections" *ngIf="playlists">
+    <app-playlists *ngIf="playlists" [playlists]="playlists.items"></app-playlists>
   </div>
 </div>

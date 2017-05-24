@@ -48,8 +48,8 @@ export class PlayerComponent implements OnInit {
     this.api.useLink(this.music.track.album.href).subscribe(
       response => {
         const res = JSON.parse(response['_body']);
-        this.api.album = res;
-        this.router.navigate(['/album']);
+        this.api.playlist = res;
+        this.router.navigate(['/playlist']);
       },
       error => console.log(error)
     );

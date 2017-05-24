@@ -42,7 +42,7 @@ export class MainComponent implements OnInit {
   // INITIATION
   ngOnInit() {
     this.getFeaturedPlaylists();
-    this.getCategoriesAndReleses();
+    this.getCategories();
   }
 
   // get featured playlists
@@ -64,7 +64,7 @@ export class MainComponent implements OnInit {
   }
 
   // get categories and releses
-  getCategoriesAndReleses() {
+  getCategories() {
     this.api.getCategoriesAndReleses().subscribe(
       response => {
         const res = JSON.parse(response['_body']);
@@ -80,6 +80,9 @@ export class MainComponent implements OnInit {
     this.api.useLink(this.playlists['items'][i].href).subscribe(
       response => {
         const res = JSON.parse(response['_body']);
+        for (let i=0; i < res.tracks.items.length; i++) {
+          res.tracks.items[i] = res.tracks.items[i].track;
+        }
         this.api.playlist = res;
         this.router.navigate(['/playlist']);
       },
@@ -135,45 +138,4 @@ export class MainComponent implements OnInit {
       error => console.log(error)
     );
   }
-
-
-  // NEW RELESES
-  // open album
-  openAlbum(i) {
-    this.api.useLink(this.newReleses.items[i].href).subscribe(
-      response => {
-        const res = JSON.parse(response['_body']);
-        this.api.album = res;
-        this.router.navigate(['/album']);
-      },
-      error => console.log(error)
-    );
-  }
-
-  // play album
-  playAlbum(event, i) {
-    event.stopPropagation();
-    this.api.useLink(this.newReleses.items[i].href).subscribe(
-      response => {
-        const res = JSON.parse(response['_body']);
-        this.music.playlist = res.tracks.items;
-        this.music.play(0);
-      },
-      error => console.log(error)
-    );
-  }
-
-  // open artist
-  openArtist(event, i, j) {
-    event.stopPropagation();
-    this.api.useLink(this.newReleses.items[i].artists[j].href).subscribe(
-      response => {
-        const res = JSON.parse(response['_body']);
-        this.api.artist = res;
-        this.router.navigate(['/artist']);
-      },
-      error => console.log(error)
-    );
-  }
-
 }

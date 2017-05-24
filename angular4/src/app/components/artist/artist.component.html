@@ -1,4 +1,5 @@
 <div class="main">
+
   <header *ngIf="artist">
     <h1>{{artist.name}}</h1>
     <div class="buttons">
@@ -10,53 +11,25 @@
     <h5 (click)="view = 'related'">Related Artists</h5>
     <h5 (click)="view = 'about'">About</h5>
   </header>
+
+  <!-- overview section with just few top tracks and few albums -->
   <div *ngIf="view == 'overview'">
-    <div class="topTracks" *ngIf="topTracks">
+
+    <div class="tracks topTracks" *ngIf="topTracks">
       <h1>Popular</h1>
-      <ul *ngFor="let track of topTracks; let i = index" (mouseenter)="showPlay(i)" (mouseleave)="hidePlay(i)">
-        <li><h4> <span *ngIf="selected !== i; else play">{{i + 1}}.</span>  {{track.name}}</h4></li>
-        <ng-template #play><i (click)="playSong(i)" class="fa fa-play" aria-hidden="true" [@enter]></i></ng-template>
-      </ul>
+      <app-tracks [tracks]="topTracks"></app-tracks>
     </div>
-    <div *ngIf="albums">
+
+    <div class="chosen" *ngIf="albums">
       <h1>Albums</h1>
-      <div class="playlists">
-        <div class="playlist" *ngFor="let item of albums.items; let i = index">
-          <div *ngIf="item.images[0]; else placeHolderImg" (click)="openAlbum(i)" class="playlistImg" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+item.images[0].url+')'">
-            <div class="background" *ngIf="imgSelected == i" [@enter]>
-              <i (click)="playAlbum($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
-            </div>
-          </div>
-          <h3 (click)="openAlbum(i)">{{item.name}}</h3>
-          <h3 *ngFor="let artist of item.artists; let j = index"><span (click)="chooseAndOpenArtist(i, j)">{{artist.name}}</span></h3>
-          <ng-template #placeHolderImg>
-            <div (click)="openAlbum(i)" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+'../../../assets/placeholder.png'+')'" class="playlistImg">
-              <div class="background" *ngIf="imgSelected == i" [@enter]>
-                <i (click)="playAlbum($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
-              </div>
-            </div>
-          </ng-template>
-        </div>
-      </div>
+      <app-playlists  [playlists]="albums.items"></app-playlists>
     </div>
   </div>
-  <div class="playlists" *ngIf="view == 'related'">
-    <div class="playlist" *ngFor="let artist of relatedArtists; let i = index">
-      <div *ngIf="artist.images[0]; else placeHolderImg" (click)="artistR(i)" class="playlistImg round" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+artist.images[0].url+')'">
-        <div class="background round" *ngIf="imgSelected == i" [@enter]>
-          <i (click)="playArtist($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
-        </div>
-      </div>
-      <h4 (click)="artistR(i)">{{artist.name}}</h4>
-      <ng-template #placeHolderImg>
-        <div (click)="artistR(i)" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+'../../../assets/placeholder.png'+')'" class="playlistImg round">
-          <div class="background" *ngIf="imgSelected == i" [@enter]>
-            <i (click)="playArtist($event, i)" class="fa fa-play-circle-o fa-4x" aria-hidden="true"></i>
-          </div>
-        </div>
-      </ng-template>
-    </div>
+
+  <div class="chosen" *ngIf="view == 'related'">
+    <app-playlists  [playlists]="relatedArtists" [round]="true" (artistR)="artistR($event)"></app-playlists>
   </div>
+
   <div class="about" *ngIf="view == 'about'">
     <h1>Popularity: {{artist.popularity}}</h1>
     <h1 *ngIf="artist.genres.length !== 0">Ganres:</h1>

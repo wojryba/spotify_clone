@@ -10,12 +10,12 @@ export class ApiService {
   public album: any;
   public user: any;
   public category: any;
-
+  private uri = 'http://localhost:3000/';
   constructor(private http: Http) { }
 
   // LOGIN STAFF
   public auth() {
-    if (localStorage.getItem('code')) {
+    if (localStorage.getItem(this.uri+'code')) {
       return true;
     } else {
       return false;
@@ -23,7 +23,7 @@ export class ApiService {
   }
 
   login() {
-    return this.http.get('getLoginUrl');
+    return this.http.get(this.uri+'getLoginUrl');
   }
 
   postCode(code) {
@@ -31,7 +31,7 @@ export class ApiService {
     const headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('callback', encoded_data, options);
+    return this.http.post(this.uri+'callback', encoded_data, options);
   }
 
   // use links provided by API
@@ -47,11 +47,12 @@ export class ApiService {
   }
 
   getFeaturedPlaylists() {
-    return this.http.get('browse/getFeaturedPlaylists');
+    console.log(this.uri+'browse/getFeaturedPlaylists');
+    return this.http.get(this.uri+'browse/getFeaturedPlaylists');
   }
 
   getCategoriesAndReleses() {
-    return this.http.get('browse/categories');
+    return this.http.get(this.uri+'browse/categories');
   }
 
   getCategory(category) {
@@ -59,7 +60,7 @@ export class ApiService {
     const headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('browse/getCategory', encoded_data, options);
+    return this.http.post(this.uri+'browse/getCategory', encoded_data, options);
   }
 
   getArtistEverything(artist) {
@@ -67,7 +68,7 @@ export class ApiService {
     const headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('artist', encoded_data, options);
+    return this.http.post(this.uri+'artist', encoded_data, options);
   }
 
   getUserPlaylists(user) {
@@ -75,7 +76,7 @@ export class ApiService {
     const headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('user/playlists', encoded_data, options);
+    return this.http.post(this.uri+'user/playlists', encoded_data, options);
   }
 
   search(query) {
@@ -83,7 +84,7 @@ export class ApiService {
     const headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('search', encoded_data, options);
+    return this.http.post(this.uri+'search', encoded_data, options);
   }
 
 
@@ -93,7 +94,7 @@ export class ApiService {
     const headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('user/followPlaylist', encoded_data, options);
+    return this.http.post(this.uri+'user/followPlaylist', encoded_data, options);
   }
 
   unFollowPlaylist(owner, id) {
@@ -101,7 +102,7 @@ export class ApiService {
     const headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('user/unFollowPlaylist', encoded_data, options);
+    return this.http.post(this.uri+'user/unFollowPlaylist', encoded_data, options);
   }
 
   checkIfPlaylistFollowed(owner, id) {
@@ -109,7 +110,7 @@ export class ApiService {
     const headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('user/checkIfPlaylistFollowed', encoded_data, options);
+    return this.http.post(this.uri+'user/checkIfPlaylistFollowed', encoded_data, options);
   }
 
   // ALBUM FOLLOWING
@@ -118,7 +119,7 @@ export class ApiService {
     const headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('user/checkAlbum', encoded_data, options);
+    return this.http.post(this.uri+'user/checkAlbum', encoded_data, options);
   }
 
   saveAlbum(id) {
@@ -126,7 +127,7 @@ export class ApiService {
     const headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('user/saveAlbum', encoded_data, options);
+    return this.http.post(this.uri+'user/saveAlbum', encoded_data, options);
   }
 
   deleteAlbum(id) {
@@ -134,7 +135,7 @@ export class ApiService {
     const headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('user/deleteAlbum', encoded_data, options);
+    return this.http.post(this.uri+'user/deleteAlbum', encoded_data, options);
   }
 
   // ARTISTS
@@ -143,7 +144,7 @@ export class ApiService {
     const headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('user/checkIfArtistFollowed', encoded_data, options);
+    return this.http.post(this.uri+'user/checkIfArtistFollowed', encoded_data, options);
   }
 
   followArtist(id) {
@@ -151,7 +152,7 @@ export class ApiService {
     const headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('user/followArtist', encoded_data, options);
+    return this.http.post(this.uri+'user/followArtist', encoded_data, options);
   }
 
   unFollowArtist(id) {
@@ -159,7 +160,7 @@ export class ApiService {
     const headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('user/unFollowArtist', encoded_data, options);
+    return this.http.post(this.uri+'user/unFollowArtist', encoded_data, options);
   }
 
 
@@ -169,7 +170,7 @@ export class ApiService {
     const headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('user/checkIfTrackSaved', encoded_data, options);
+    return this.http.post(this.uri+'user/checkIfTrackSaved', encoded_data, options);
   }
 
   saveTrack(id) {
@@ -177,7 +178,7 @@ export class ApiService {
     const headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('user/saveTrack', encoded_data, options);
+    return this.http.post(this.uri+'user/saveTrack', encoded_data, options);
   }
 
   deleteTrack(id) {
@@ -185,15 +186,15 @@ export class ApiService {
     const headers = new Headers({ 'Content-Type': 'application/json;charset=utf-8' });
     const options = new RequestOptions({ headers: headers });
 
-    return this.http.post('user/deleteTrack', encoded_data, options);
+    return this.http.post(this.uri+'user/deleteTrack', encoded_data, options);
   }
 
   // usermusic
   getUserMusic() {
-    return this.http.get('user/getUserMusic');
+    return this.http.get(this.uri+'user/getUserMusic');
   }
 
   getMe() {
-    return this.http.get('user/me');
+    return this.http.get(this.uri+'user/me');
   }
 }
