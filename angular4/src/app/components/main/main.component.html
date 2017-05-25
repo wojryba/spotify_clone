@@ -1,10 +1,14 @@
 <div class="main" *ngIf="playlists">
+
   <header>
     <h5 (click)="switch = 'chosen'">Chosen</h5>
     <h5 (click)="switch = 'categories'">Geners and moods</h5>
   </header>
-  <div class="chosen" *ngIf="switch == 'chosen'" [@enter]>
+
+  <div class="center" *ngIf="switch == 'chosen'" [@enter]>
     <h1>{{message}}</h1>
+
+    <!-- only case in entire app with playlists without a name -->
     <div class="playlists">
       <div (click)="openPlaylist(i)" *ngFor="let item of playlists.items; let i = index" (mouseenter)="showBackgroundPlay(i)" (mouseleave)="hideBackgroundPlay(i)" [style.background-image]="'url('+item.images[0].url+')'" class="playlist">
         <div class="background" *ngIf="imgSelected == i" [@enter]>
@@ -16,7 +20,8 @@
     <h5 *ngIf="show">There is no more for now!</h5>
   </div>
 
-  <div class="chosen" *ngIf="switch == 'categories'" [@enter]>
+  <!-- categories view -->
+  <div class="center" *ngIf="switch == 'categories'" [@enter]>
     <h1>Geners and moods</h1>
     <div class="playlists">
       <div (click)="openCategory(i)" class="playlist" *ngFor="let item of categories.items; let i = index">

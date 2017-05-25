@@ -23,7 +23,6 @@ export class CategoryComponent implements OnInit {
   ngOnInit() {
     if (this.api.category) {
       this.playlists = this.api.category;
-      console.log(this.playlists);
     }
   }
 }

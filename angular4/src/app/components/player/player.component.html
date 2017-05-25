@@ -1,4 +1,5 @@
 <div class="player">
+  <!-- left side of player, img title album favorites -->
   <div *ngIf="music.track; else info" class="info">
     <i id="sidebarShow" class="fa fa-bars fa-2x" aria-hidden="true" (click)="sidebar()" *ngIf="mobileview"></i>
     <img src={{music.track.album.images[0].url}} *ngIf="!mobileview" />
@@ -9,32 +10,30 @@
     <i *ngIf="!mobileview && music.saved; else save" class="fa fa-check highlight" aria-hidden="true" (click)="deleteTrack()"></i>
     <ng-template #save><i class="fa fa-plus highlight" aria-hidden="true" (click)="saveTrack()" *ngIf="!mobileview"></i></ng-template>
   </div>
+  <ng-template #info><div class="info"></div></ng-template>
+
+  <!-- main player section, progress bar and controls -->
   <div class="controls">
     <div class="buttons">
       <button (click)="music.random = !music.random"><i class="fa fa-random" aria-hidden="true"></i></button>
       <button (click)="music.previes(music.i)"><i class="fa fa-step-backward" aria-hidden="true"></i></button>
       <button *ngIf="music.p; else play" (click)="music.pause()"><i class="fa fa-play" aria-hidden="true"></i></button>
+      <ng-template #play><button (click)="music.pause()"><i class="fa fa-pause" aria-hidden="true"></i></button></ng-template>
       <button (click)="music.next(music.i)"><i class="fa fa-step-forward" aria-hidden="true"></i></button>
     </div>
-    <span id="currentTime" *ngIf="!mobileview" >{{music.currentTime}}</span><div (mouseenter)="slider = true" (mouseleave)="slider = false" class="progressBar">
+    
+    <!-- progress bar -->
+    <span id="currentTime" *ngIf="!mobileview" >{{music.currentTime}}</span>
+    <div (mouseenter)="slider = true" (mouseleave)="slider = false" class="progressBar">
       <md-slider *ngIf="slider; else progress" min="1" max="100" step="0.5" [(ngModel)]="music.value" (change)="progressBar($event)"></md-slider>
-    </div><span id="duration" *ngIf="!mobileview" >{{music.duration}}</span>
+      <ng-template #progress><md-progress-bar [value]="music.value"></md-progress-bar></ng-template>
+    </div>
+    <span id="duration" *ngIf="!mobileview" >{{music.duration}}</span>
+
   </div>
+
   <div class="volumeChange">
     <i class="fa fa-volume-up" aria-hidden="true" (click)="music.mute()"></i>
     <md-slider min="0" max="1" step="0.01" [(ngModel)]="music.volume" (change)="volume($event)"></md-slider>
   </div>
 </div>
-
-<ng-template #play>
-  <button (click)="music.pause()"><i class="fa fa-pause" aria-hidden="true"></i></button>
-</ng-template>
-
-<ng-template #progress>
-      <md-progress-bar [value]="music.value"></md-progress-bar>
-</ng-template>
-
-<ng-template #info>
-    <div class="info">
-    </div>
-</ng-template>

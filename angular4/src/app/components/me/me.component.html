@@ -6,7 +6,7 @@
     <h5 (click)="switch = 'artists'">Artists</h5>
   </header>
 
-  <div class="generalResultsSections" *ngIf="switch === 'playlists'" [@enter]>
+  <div class="center" *ngIf="switch === 'playlists'" [@enter]>
     <h1>Playlists</h1>
     <app-playlists *ngIf="playlists" [playlists]="playlists.items"></app-playlists>
   </div>
@@ -16,13 +16,13 @@
     <app-tracks [tracks]="tracks.items"></app-tracks>
   </div>
 
-  <div class="generalResultsSections" *ngIf="switch === 'albums'" [@enter]>
+  <div class="center" *ngIf="switch === 'albums'" [@enter]>
     <h1>Albums</h1>
     <app-playlists [playlists]="albums.items"></app-playlists>
   </div>
 
 
-  <div class="generalResultsSections" *ngIf="switch === 'artists'" [@enter]>
+  <div class="center" *ngIf="switch === 'artists'" [@enter]>
     <h1>Artists</h1>
     <app-playlists [playlists]="artists.items" [artists]="true"></app-playlists>
   </div>

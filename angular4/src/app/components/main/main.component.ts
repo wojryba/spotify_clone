@@ -21,8 +21,6 @@ export class MainComponent implements OnInit {
   private message: any;
   private playlists: any;
   private categories: any;
-  private newReleses: any;
-  private recomendations: any;
   private show = false;
   private imgSelected;
   private switch = 'chosen';
@@ -80,8 +78,8 @@ export class MainComponent implements OnInit {
     this.api.useLink(this.playlists['items'][i].href).subscribe(
       response => {
         const res = JSON.parse(response['_body']);
-        for (let i=0; i < res.tracks.items.length; i++) {
-          res.tracks.items[i] = res.tracks.items[i].track;
+        for (let j = 0; j < res.tracks.items.length; j++) {
+          res.tracks.items[j] = res.tracks.items[j].track;
         }
         this.api.playlist = res;
         this.router.navigate(['/playlist']);

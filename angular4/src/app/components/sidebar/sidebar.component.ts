@@ -17,7 +17,6 @@ export class SidebarComponent implements OnInit {
     this.api.getMe().subscribe(
       response => {
         this.user = JSON.parse(response['_body']);
-        console.log(this.user);
       },
       error => {
         console.log(error);

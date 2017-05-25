@@ -4,7 +4,8 @@
       <br />
       <h1>User's playlists:</h1>
   </div>
-  <div class="generalResultsSections" *ngIf="playlists">
+
+  <div class="center" *ngIf="playlists">
     <app-playlists *ngIf="playlists" [playlists]="playlists.items"></app-playlists>
   </div>
 </div>

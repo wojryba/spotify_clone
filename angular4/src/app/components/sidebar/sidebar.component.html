@@ -1,15 +1,21 @@
 <div class="sidebar">
+
   <div class="borededBox">
     <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['']"><i class="fa fa-spotify fa-4x" aria-hidden="true"></i></a>
   </div>
-  <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['search']"><div class="searchBox">
-    <h3>Search</h3>
-    <i id="searchIcon" class="fa fa-search fa-lg" aria-hidden="true"></i>
-  </div></a>
+
+  <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['search']">
+    <div class="searchBox">
+      <h3>Search</h3>
+      <i id="searchIcon" class="fa fa-search fa-lg" aria-hidden="true"></i>
+    </div>
+  </a>
+
   <div class="borededBox">
     <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['']"><h4>Browse</h4></a>
     <a [routerLinkActive]="['active']" [routerLinkActiveOptions]="{exact: true}" [routerLink]="['/me']"><h4>Your Music</h4></a>
   </div>
+  
   <div class="user" *ngIf="user">
     <h3>{{user.id}}</h3>
     <a class="btn btn-primary btn-lg" (click)="logOut()">Log Out</a>

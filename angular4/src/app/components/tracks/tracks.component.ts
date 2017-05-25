@@ -33,7 +33,6 @@ export class TracksComponent implements OnInit {
 
 
   ngOnInit() {
-    console.log(this.tracks);
   }
 
   playSong(i) {

@@ -11,8 +11,6 @@
   background: -webkit-linear-gradient(top, #424242 0%,#3d3d3d 5%,#3e3e3e 6%,#383838 10%,#383838 12%,#343434 14%,#333333 16%,#2a2a2a 25%,#292929 28%,#232323 31%,#232323 33%,#1f1f1f 35%,#1a1a1a 42%,#0e0e0e 53%,#0e0e0e 55%,#0a0a0a 57%,#0b0b0b 57%,#000000 68%,#000000 82%,#616161 100%); /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(to bottom, #424242 0%,#3d3d3d 5%,#3e3e3e 6%,#383838 10%,#383838 12%,#343434 14%,#333333 16%,#2a2a2a 25%,#292929 28%,#232323 31%,#232323 33%,#1f1f1f 35%,#1a1a1a 42%,#0e0e0e 53%,#0e0e0e 55%,#0a0a0a 57%,#0b0b0b 57%,#000000 68%,#000000 82%,#616161 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#424242', endColorstr='#616161',GradientType=0 ); /* IE6-9 */
-
-
   color: white;
 }
 
@@ -46,10 +44,6 @@
   text-align: center;
 }
 
-.chosen {
-  text-align: center;
-}
-
 .player{
   position: fixed;
   bottom: 0px;
@@ -60,6 +54,11 @@
   z-index: 20;
 }
 
+.center {
+  text-align: center;
+}
+
+/* PLAYLIST VIEW */
 .playlists {
   display: flex;
   flex-wrap: wrap;
@@ -119,6 +118,7 @@
   list-style-type: none;
 }
 
+/* HIGHLITHING OF STAFF */
 .aroundHighlight {
   color: #8D8B8B;
 }
@@ -136,10 +136,6 @@
 .underline:hover {
   text-decoration: underline;
   cursor: pointer;
-}
-
-.center {
-  text-align: center;
 }
 
 @media (max-width: 1024px) {

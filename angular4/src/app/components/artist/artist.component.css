@@ -2,19 +2,6 @@
   display: block;
 }
 
-.round {
-  border-radius: 100%;
-}
-
-.playlist {
-  text-align: center;
-  min-height: 300px;
-  display: flex;
-  flex-direction:column;
-  min-height: 250px;
-}
-
-
 .topTracks {
   text-align: left;
   max-width: 1050px;

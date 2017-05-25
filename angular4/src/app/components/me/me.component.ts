@@ -33,21 +33,20 @@ export class MeComponent implements OnInit {
     this.api.getUserMusic().subscribe(
       response => {
         const res = JSON.parse(response['_body']);
+
         // normalizing album output, to fit to all others
-        for (let i=0; i < res.albums.items.length; i++) {
+        for (let i = 0; i < res.albums.items.length; i++) {
           res.albums.items[i] = res.albums.items[i].album;
         }
-        this.albums = res.albums;
-        
         // normalizing tracks output, to fit to all others
-        for (let i=0; i < res.tracks.items.length; i++) {
+        for (let i = 0; i < res.tracks.items.length; i++) {
           res.tracks.items[i] = res.tracks.items[i].track;
         }
-        this.tracks = res.tracks;
 
+        this.tracks = res.tracks;
+        this.albums = res.albums;
         this.artists = res.artists.artists;
         this.playlists = res.playlists;
-        console.log(res);
       },
       error => console.log(error)
     );

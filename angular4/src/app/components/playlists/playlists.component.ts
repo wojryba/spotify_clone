@@ -36,7 +36,6 @@ export class PlaylistsComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.playlists);
   }
 
   playPlaylist(event, i) {
@@ -71,14 +70,12 @@ export class PlaylistsComponent implements OnInit {
         if (this.artists) {
           this.api.artist = res;
           this.router.navigate(['/artist']);
-        }
-        // if we are in other views, open playlist or album
-        else {
+        } else { // if we are in other views, open playlist or album
           // normalize tracks output.
           // if they are not straight in items, move them to items
           if (res.tracks.items[i].track) {
-            for (let i=0; i < res.tracks.items.length; i++) {
-              res.tracks.items[i] = res.tracks.items[i].track;
+            for (let j = 0; j < res.tracks.items.length; j++) {
+              res.tracks.items[j] = res.tracks.items[j].track;
             }
           }
           this.api.playlist = res;

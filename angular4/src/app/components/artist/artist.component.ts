@@ -21,8 +21,6 @@ export class ArtistComponent implements OnInit {
   private relatedArtists: any;
   private topTracks: any;
   private albums: any;
-  private selected: any;
-  private imgSelected: any;
   private followed: boolean;
 
   constructor(private api: ApiService) { }

@@ -17,6 +17,7 @@ export class PlayerComponent implements OnInit {
   }
 
   ngOnInit() {
+    // loading last played track on start.
     if (JSON.parse(localStorage.getItem('playlist'))) {
       this.music.playlist = JSON.parse(localStorage.getItem('playlist'));
       this.music.i = JSON.parse(localStorage.getItem('i'));
@@ -26,10 +27,12 @@ export class PlayerComponent implements OnInit {
     }
   }
 
+  // mobileview, showing sidebar
   sidebar() {
     this.showsiebar.emit();
   }
 
+  // updating progress bar
   progressBar(event: any) {
     if (this.music.audio.duration) {
       const t = (this.music.value * this.music.audio.duration) / 100;
@@ -37,6 +40,7 @@ export class PlayerComponent implements OnInit {
     }
   }
 
+  // chaging volume
   volume(event: any) {
     if (this.music.audio.duration) {
       this.music.changeVolume();

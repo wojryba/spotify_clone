@@ -1,10 +1,12 @@
 <div class="main">
   <div class="searchComponent">
+
     <header class="search">
       <label><p id="label">Search for tracks, artists, playlists, albums...</p>
         <input #search placeholder="Start writing..." value={{search.value}} (keyup)="searchInput($event, search)" />
       </label>
     </header>
+
     <div class=results *ngIf="tracks">
       <header>
         <h4 (click)="show = 'top'">Top Results</h4>
@@ -23,52 +25,52 @@
         </div>
 
         <!-- ARTIST SECTION -->
-        <div class="generalResultsSections">
+        <div class="center">
           <h1>Artists:</h1>
           <app-playlists [playlists]="overview.artists" [artists]="true"></app-playlists>
         </div>
 
         <!-- ALBUMS SECTION -->
-        <div class="generalResultsSections">
+        <div class="center">
           <h1>Albums:</h1>
           <app-playlists [playlists]="overview.albums"></app-playlists>
         </div>
 
         <!-- PLAYLISTS SECTION -->
-        <div class="generalResultsSections">
+        <div class="center">
           <h1>Playlists</h1>
           <app-playlists [playlists]="overview.playlists"></app-playlists>
         </div>
-    </div>
+      </div>
 
-    <!-- SPECIFIC SECTIONS -->
-    <!-- Artist section -->
-    <div class="generalResultsSections" *ngIf="show === 'artists'">
-      <h1>Artists:</h1>
-      <app-playlists [playlists]="artists.items" [artists]="true"></app-playlists>
-      <h3 (click)="findMoreArtists()" class="highlight">Find More</h3>
-    </div>
+      <!-- SPECIFIC SECTIONS -->
+      <!-- Artist section -->
+      <div class="center" *ngIf="show === 'artists'">
+        <h1>Artists:</h1>
+        <app-playlists [playlists]="artists.items" [artists]="true"></app-playlists>
+        <h3 (click)="findMoreArtists()" class="highlight">Find More</h3>
+      </div>
 
-    <!-- SPECIGIC ALBMUMS -->
-    <div class="generalResultsSections" *ngIf="show === 'albums'">
-      <h1>Albums:</h1>
-      <app-playlists [playlists]="albums.items"></app-playlists>
-      <h3 (click)="findMoreAlbums()" class="highlight">Find More</h3>
-    </div>
+      <!-- SPECIGIC ALBMUMS -->
+      <div class="center" *ngIf="show === 'albums'">
+        <h1>Albums:</h1>
+        <app-playlists [playlists]="albums.items"></app-playlists>
+        <h3 (click)="findMoreAlbums()" class="highlight">Find More</h3>
+      </div>
 
-    <!-- Playlists SECTIONS -->
-    <div class="generalResultsSections" *ngIf="show === 'playlists'">
-      <h1>Playlists:</h1>
-      <app-playlists [playlists]="playlists.items"></app-playlists>
-      <h3 (click)="findMorePlaylists()" class="highlight">Find More</h3>
-    </div>
+      <!-- Playlists SECTIONS -->
+      <div class="center" *ngIf="show === 'playlists'">
+        <h1>Playlists:</h1>
+        <app-playlists [playlists]="playlists.items"></app-playlists>
+        <h3 (click)="findMorePlaylists()" class="highlight">Find More</h3>
+      </div>
 
-    <!-- tracks SECTIONS -->
-    <div class="tracks" *ngIf="show === 'tracks'">
-      <h1>Tracks:</h1>
-      <app-tracks [tracks]="tracks.items"></app-tracks>
-      <h3 (click)="findMoreTracks()" class="highlight">Find More</h3>
+      <!-- tracks SECTIONS -->
+      <div class="tracks" *ngIf="show === 'tracks'">
+        <h1>Tracks:</h1>
+        <app-tracks [tracks]="tracks.items"></app-tracks>
+        <h3 (click)="findMoreTracks()" class="highlight">Find More</h3>
+      </div>
     </div>
-  </div>
   </div>
 </div>

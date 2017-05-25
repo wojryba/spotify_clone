@@ -12,7 +12,7 @@
     <h5 (click)="view = 'about'">About</h5>
   </header>
 
-  <!-- overview section with just few top tracks and few albums -->
+  <!-- overview section with just top tracks and few albums -->
   <div *ngIf="view == 'overview'">
 
     <div class="tracks topTracks" *ngIf="topTracks">
@@ -20,16 +20,19 @@
       <app-tracks [tracks]="topTracks"></app-tracks>
     </div>
 
-    <div class="chosen" *ngIf="albums">
+    <div class="center" *ngIf="albums">
       <h1>Albums</h1>
       <app-playlists  [playlists]="albums.items"></app-playlists>
     </div>
   </div>
 
-  <div class="chosen" *ngIf="view == 'related'">
+  <!-- specific sections -->
+  <!-- related artists -->
+  <div class="center" *ngIf="view == 'related'">
     <app-playlists  [playlists]="relatedArtists" [round]="true" (artistR)="artistR($event)"></app-playlists>
   </div>
 
+  <!-- about -->
   <div class="about" *ngIf="view == 'about'">
     <h1>Popularity: {{artist.popularity}}</h1>
     <h1 *ngIf="artist.genres.length !== 0">Ganres:</h1>
