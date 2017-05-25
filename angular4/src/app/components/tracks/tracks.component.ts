@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { ApiService } from '../../services/api.service';
 import { trigger, state, style, animate, transition } from '@angular/animations';
 import { MusicService } from '../../services/music.service';
@@ -20,6 +20,7 @@ import { Router } from '@angular/router';
 export class TracksComponent implements OnInit {
   @Input() tracks;
   private selected;
+  @Output() openA = new EventEmitter();
 
   constructor(private api: ApiService, private music: MusicService, private router: Router) { }
 
@@ -56,7 +57,7 @@ export class TracksComponent implements OnInit {
       response => {
         const res = JSON.parse(response['_body']);
         this.api.playlist = res;
-        this.router.navigate(['/playlist']);
+        this.openA.emit();
       },
       error => console.log(error)
     );

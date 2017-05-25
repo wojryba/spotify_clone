@@ -1,6 +1,6 @@
 webpackJsonp([2,4],{
 
-/***/ 172:
+/***/ 173:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)();
@@ -15,22 +15,22 @@ exports.push([module.i, ".mat-elevation-z0{box-shadow:0 0 0 0 rgba(0,0,0,.2),0 0
 
 /***/ }),
 
-/***/ 173:
+/***/ 174:
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(4)();
 // imports
-exports.i(__webpack_require__(172), "");
+exports.i(__webpack_require__(173), "");
 
 // module
-exports.push([module.i, ".webplayer{\n  position: fixed;\n  top: 0px;\n  left: 0px;\n  height: 100%;\n  width: 100%;\n  background: #424242; /* Old browsers */ /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */\n  background: linear-gradient(to bottom, #424242 0%,#3d3d3d 5%,#3e3e3e 6%,#383838 10%,#383838 12%,#343434 14%,#333333 16%,#2a2a2a 25%,#292929 28%,#232323 31%,#232323 33%,#1f1f1f 35%,#1a1a1a 42%,#0e0e0e 53%,#0e0e0e 55%,#0a0a0a 57%,#0b0b0b 57%,#000000 68%,#000000 82%,#616161 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#424242', endColorstr='#616161',GradientType=0 ); /* IE6-9 */\n\n\n  color: white;\n}\n\n.sidebar {\n  position: fixed;\n  top: 0px;\n  left: 0px;\n  height: 100%;\n  width: 15%;\n  background-color: rgba(0, 0, 0, 0.5);\n}\n\n.main {\n  position: fixed;\n  top: 0px;\n  left: 0px;\n  margin: auto;\n  margin-left: 5%;\n  width: 100%;\n  height: 85%;\n  overflow-y: scroll;\n  z-index: -1;\n}\n\n.main h5 {\n  display: inline-block;\n  margin: 2%;\n}\n\n.main header {\n  text-align: center;\n}\n\n.chosen {\n  text-align: center;\n}\n\n.player{\n  position: fixed;\n  bottom: 0px;\n  left: 0px;\n  width: 100%;\n  height: 15%;\n  background: #1e1e1e;\n  z-index: 20;\n}\n\n.playlists {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n  max-width: 1050px;\n  margin: auto;\n}\n\n.playlist {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient:vertical;\n  -webkit-box-direction:normal;\n      -ms-flex-direction:column;\n          flex-direction:column;\n  margin: 1%;\n  width: 25%;\n  min-width: 300px;\n  min-height: 300px;\n}\n\n.playlistImg {\r\n  min-width: 300px;\r\n  min-height: 300px;\r\n  background-repeat: no-repeat;\r\n  background-size: cover;\r\n  margin: auto;\r\n  width: 80%;\r\n  height: auto;\r\n}\n\n.background {\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.6);\n}\n\n.background i {\n  position: relative;\n  top: 40%;\n}\n\n.background {\n  width: 100%;\n  height: 300px;\n}\n\n.generalResultsSections {\n  text-align: center;\n}\n\n.tracks p {\n  display: inline;\n}\n\n.tracks {\n  margin-left: 5%;\n}\n\n.tracks ul {\n  list-style-type: none;\n}\n\n.aroundHighlight {\n  color: #8D8B8B;\n}\n\n.highlight {\n  color: #8D8B8B;\n}\n\n.highlight:hover {\n  text-decoration: underline;\n  color: #ffffff;\n  cursor: pointer;\n}\n\n.underline:hover {\n  text-decoration: underline;\n  cursor: pointer;\n}\n\n.center {\n  text-align: center;\n}\n\n@media (max-width: 1024px) {\n  .main {\n    margin-left: 15%;\n    width: 85%;\n  }\n\n  .searchComponent {\n    margin-left: -10%;\n  }\n\n  .sidebar {\n    width: 16%;\n    z-index: 10;\n  }\n}\n\n@media (max-width: 425px) {\n  .main {\n    margin-left: 0;\n    width: 100%;\n  }\n\n  .sidebar {\n    background-color: black;\n    width: 80%;\n  }\n}\n", ""]);
+exports.push([module.i, ".webplayer{\n  position: fixed;\n  top: 0px;\n  left: 0px;\n  height: 100%;\n  width: 100%;\n  background: #424242; /* Old browsers */ /* FF3.6-15 */ /* Chrome10-25,Safari5.1-6 */\n  background: linear-gradient(to bottom, #424242 0%,#3d3d3d 5%,#3e3e3e 6%,#383838 10%,#383838 12%,#343434 14%,#333333 16%,#2a2a2a 25%,#292929 28%,#232323 31%,#232323 33%,#1f1f1f 35%,#1a1a1a 42%,#0e0e0e 53%,#0e0e0e 55%,#0a0a0a 57%,#0b0b0b 57%,#000000 68%,#000000 82%,#616161 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */\n  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#424242', endColorstr='#616161',GradientType=0 ); /* IE6-9 */\n  color: white;\n}\n\n.sidebar {\n  position: fixed;\n  top: 0px;\n  left: 0px;\n  height: 100%;\n  width: 15%;\n  background-color: rgba(0, 0, 0, 0.5);\n}\n\n.main {\n  position: fixed;\n  top: 0px;\n  left: 0px;\n  margin: auto;\n  margin-left: 5%;\n  width: 100%;\n  height: 85%;\n  overflow-y: scroll;\n  z-index: -1;\n}\n\n.main h5 {\n  display: inline-block;\n  margin: 2%;\n}\n\n.main header {\n  text-align: center;\n}\n\n.player{\n  position: fixed;\n  bottom: 0px;\n  left: 0px;\n  width: 100%;\n  height: 15%;\n  background: #1e1e1e;\n  z-index: 20;\n}\n\n.center {\n  text-align: center;\n}\n\n/* PLAYLIST VIEW */\n.playlists {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -ms-flex-wrap: wrap;\n      flex-wrap: wrap;\n  -ms-flex-pack: distribute;\n      justify-content: space-around;\n  max-width: 1050px;\n  margin: auto;\n}\n\n.playlist {\n  display: -webkit-box;\n  display: -ms-flexbox;\n  display: flex;\n  -webkit-box-orient:vertical;\n  -webkit-box-direction:normal;\n      -ms-flex-direction:column;\n          flex-direction:column;\n  margin: 1%;\n  width: 25%;\n  min-width: 300px;\n  min-height: 300px;\n}\n\n.playlistImg {\r\n  min-width: 300px;\r\n  min-height: 300px;\r\n  background-repeat: no-repeat;\r\n  background-size: cover;\r\n  margin: auto;\r\n  width: 80%;\r\n  height: auto;\r\n}\n\n.background {\n  width: 100%;\n  height: 100%;\n  background-color: rgba(0, 0, 0, 0.6);\n}\n\n.background i {\n  position: relative;\n  top: 40%;\n}\n\n.background {\n  width: 100%;\n  height: 300px;\n}\n\n.generalResultsSections {\n  text-align: center;\n}\n\n.tracks p {\n  display: inline;\n}\n\n.tracks {\n  margin-left: 5%;\n}\n\n.tracks ul {\n  list-style-type: none;\n}\n\n/* HIGHLITHING OF STAFF */\n.aroundHighlight {\n  color: #8D8B8B;\n}\n\n.highlight {\n  color: #8D8B8B;\n}\n\n.highlight:hover {\n  text-decoration: underline;\n  color: #ffffff;\n  cursor: pointer;\n}\n\n.underline:hover {\n  text-decoration: underline;\n  cursor: pointer;\n}\n\n@media (max-width: 1024px) {\n  .main {\n    margin-left: 15%;\n    width: 85%;\n  }\n\n  .searchComponent {\n    margin-left: -10%;\n  }\n\n  .sidebar {\n    width: 16%;\n    z-index: 10;\n  }\n}\n\n@media (max-width: 425px) {\n  .main {\n    margin-left: 0;\n    width: 100%;\n  }\n\n  .sidebar {\n    background-color: black;\n    width: 80%;\n  }\n}\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ 252:
+/***/ 255:
 /***/ (function(module, exports) {
 
 /*
@@ -283,7 +283,7 @@ function updateLink(linkElement, obj) {
 
 /***/ }),
 
-/***/ 256:
+/***/ 259:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports = __webpack_require__(99);
@@ -354,10 +354,10 @@ module.exports = function() {
 // style-loader: Adds some css to the DOM by adding a <style> tag
 
 // load the styles
-var content = __webpack_require__(173);
+var content = __webpack_require__(174);
 if(typeof content === 'string') content = [[module.i, content, '']];
 // add the styles to the DOM
-var update = __webpack_require__(252)(content, {});
+var update = __webpack_require__(255)(content, {});
 if(content.locals) module.exports = content.locals;
 // Hot Module Replacement
 if(false) {
@@ -375,5 +375,5 @@ if(false) {
 
 /***/ })
 
-},[256]);
+},[259]);
 //# sourceMappingURL=styles.bundle.js.map

@@ -65,6 +65,11 @@ export class PlaylistComponent implements OnInit {
     );
   }
 
+  openAlbum(e) {
+    this.playlist = this.api.playlist;
+    this.checkIfPlaylistFollowed();
+  }
+
 
   // open user who created a playlist
   openUser() {
@@ -91,6 +96,24 @@ export class PlaylistComponent implements OnInit {
     this.api.unFollowPlaylist(this.playlist.owner.id, this.playlist.id).subscribe(
       response => {
         this.followed = false;
+      },
+      error => console.log(error)
+    );
+  }
+
+  saveAlbum() {
+    this.api.saveAlbum(this.playlist.id).subscribe(
+      response => {
+        this.saved = true;
+      },
+      error => console.log(error)
+    );
+  }
+
+  deleteAlbum() {
+    this.api.deleteAlbum(this.playlist.id).subscribe(
+      response => {
+        this.saved = false;
       },
       error => console.log(error)
     );

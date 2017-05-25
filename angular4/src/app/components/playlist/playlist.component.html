@@ -27,6 +27,6 @@
 
   </div>
   <div class="tracks" *ngIf="playlist.tracks">
-    <app-tracks [tracks]="playlist.tracks.items"></app-tracks>
+    <app-tracks [tracks]="playlist.tracks.items" (openA)="openAlbum($event)"></app-tracks>
   </div>
 </div>

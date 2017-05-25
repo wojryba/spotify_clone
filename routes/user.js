@@ -185,14 +185,20 @@ router.get('/getUserMusic', (req, res) => {
         usersMusic.artists = data.body;
 
         // get Playlists
-        spotifyApi.getUserPlaylists('thelinmichael')
-        .then(function(data) {
-          usersMusic.playlists = data.body;
-          res.send(usersMusic);
-        }).catch(error => {
-          console.log(error);
+        spotifyApi.getMe()
+        .then(data => {
+          spotifyApi.getUserPlaylists(data.body.id)
+          .then(function(data) {
+            usersMusic.playlists = data.body;
+            res.send(usersMusic);
+          }).catch(error => {
+            console.log(error);
+            res.status(error.statusCode).send(error);
+          });
+        })
+        .catch(error => {
           res.status(error.statusCode).send(error);
-        });
+        })
       }).catch(error => {
         console.log(error);
         res.status(error.statusCode).send(error);

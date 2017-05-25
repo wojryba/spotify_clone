@@ -10,7 +10,7 @@ export class ApiService {
   public album: any;
   public user: any;
   public category: any;
-  private uri = 'http://localhost:3000/';
+  private uri = '';
   constructor(private http: Http) { }
 
   // LOGIN STAFF

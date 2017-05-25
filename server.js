@@ -57,9 +57,9 @@ app.post('/callback', (req, res) => {
 })
 
 // All remaining requests redirect to angular.
-/* app.get('*', function(request, response) {
+app.get('*', function(request, response) {
   response.sendFile(path.resolve(__dirname, './dist/', 'index.html'));
-}); */
+});
 
 app.listen(port, function(){
   console.log("connected to server on port " + port);

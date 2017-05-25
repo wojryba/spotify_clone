@@ -81,7 +81,7 @@ export class PlayerComponent implements OnInit {
   }
 
   deleteTrack() {
-    this.api.checkIfTrackSaved(this.music.track.id).subscribe(
+    this.api.deleteTrack(this.music.track.id).subscribe(
       response => {
         this.music.saved = false;
       },
